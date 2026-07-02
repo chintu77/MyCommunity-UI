@@ -1,1 +1,33 @@
+/* =====================================================
+   MyCommunity Enterprise Layout System
+   Version 1.0
+===================================================== */
 
+.mc-login-page {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 540px 1fr;
+  background: #f8fafc;
+}
+
+.mc-login-left {
+  background: #ffffff;
+  border-right: 1px solid #e5e7eb;
+  padding: 72px 64px 48px;
+}
+
+.mc-login-right {
+  position: relative;
+  background: #f8fafc;
+  min-height: 100vh;
+}
+
+@media (max-width: 960px) {
+  .mc-login-page {
+    grid-template-columns: 1fr;
+  }
+
+  .mc-login-left {
+    display: none;
+  }
+}
