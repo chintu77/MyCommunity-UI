@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Society Information | MyCommunity</title>
+  <title>Property Structure | MyCommunity</title>
 
   <style>
     @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
@@ -14,78 +14,76 @@
     .topbar{height:64px;background:#fff;border-bottom:1px solid #e5e7eb;display:flex;align-items:center;justify-content:space-between;padding:0 28px}
     .brand{display:flex;align-items:center;gap:12px}
     .brand-icon{width:42px;height:42px;border-radius:10px;background:#2563eb;color:#fff;display:grid;place-items:center;font-weight:800}
-    .brand-title{font-size:22px;font-weight:800;letter-spacing:-.4px;color:#111827}
+    .brand-title{font-size:22px;font-weight:800;letter-spacing:-.4px}
     .wizard-title{position:absolute;left:50%;transform:translateX(-50%);font-weight:700;font-size:16px}
     .user{display:flex;align-items:center;gap:16px}
     .avatar{width:34px;height:34px;border-radius:50%;background:#dbeafe;display:grid;place-items:center;font-weight:700;color:#1d4ed8}
 
-    .main{display:grid;grid-template-columns:1fr 360px}
-    .content{padding:18px 34px 24px 60px}
-    .drawer{background:#fff;border-left:1px solid #e5e7eb;padding:20px 22px}
-
+    .content{padding:28px 52px 24px}
     h1{font-size:26px;letter-spacing:-.5px;margin-bottom:6px}
-    .subtitle{color:#475569;font-size:13px;margin-bottom:22px}
+    .subtitle{color:#475569;font-size:13px;margin-bottom:26px}
 
-    .stepper{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+    .stepper{display:flex;align-items:center;gap:14px;margin:28px 36px 24px}
     .step{display:flex;align-items:center;gap:9px;color:#475569;font-size:13px;white-space:nowrap}
+    .step.done{color:#475569}
     .step.active{color:#2563eb;font-weight:700}
-    .circle{width:30px;height:30px;border-radius:50%;border:1px solid #cbd5e1;display:grid;place-items:center;background:#fff;font-weight:700}
+    .circle{width:34px;height:34px;border-radius:50%;border:1px solid #cbd5e1;display:grid;place-items:center;background:#fff;font-weight:700}
+    .done .circle{background:#16a34a;color:#fff;border-color:#16a34a}
     .active .circle{background:#2563eb;color:#fff;border-color:#2563eb}
     .line{height:1px;background:#cbd5e1;flex:1}
 
-    .card{background:#fff;border:1px solid #e5e7eb;border-radius:8px;margin-bottom:10px}
-    .card-header{font-weight:800;padding:14px 18px 8px}
-    .section-body{padding:0 18px 14px}
+    .layout{display:grid;grid-template-columns:1fr 330px;gap:42px}
+    .card{background:#fff;border:1px solid #e5e7eb;border-radius:8px;box-shadow:0 1px 4px rgba(15,23,42,.04);margin-bottom:14px}
+    .section{padding:18px 24px}
+    .section-head{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:18px}
+    .section-title{font-size:17px;font-weight:800;margin-bottom:8px}
+    .section-subtitle{font-size:13px;color:#475569}
 
-    .profile-grid{display:grid;grid-template-columns:1fr 300px;gap:24px}
-    .form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-    .form-grid.second-row{grid-template-columns:repeat(4,1fr);margin-top:14px}
-    .field label{display:block;font-size:12px;font-weight:600;margin-bottom:7px;color:#0f172a;white-space:nowrap}
-    .req{color:#dc2626;margin-left:2px}
-    .input,.select{height:34px;border:1px solid #cbd5e1;border-radius:5px;background:#fff;padding:0 10px;font-size:12px;width:100%;color:#334155}
+    .btn{height:38px;border-radius:6px;border:1px solid #2563eb;background:#fff;color:#2563eb;padding:0 18px;font-weight:700;cursor:pointer}
+    .btn-primary{background:#2563eb;color:#fff;border-color:#2563eb}
+    .btn-light{border-color:#cbd5e1;color:#334155}
+    .btn-danger{border-color:#ef4444;color:#ef4444}
 
-    .logo-upload{border-left:1px dashed #cbd5e1;padding-left:22px}
-    .upload-box{height:170px;border:1px dashed #cbd5e1;border-radius:7px;display:flex;align-items:center;justify-content:center;text-align:center;color:#64748b;font-size:12px;padding:12px}
-    .logo-preview{width:128px;height:88px;border:1px solid #e5e7eb;border-radius:6px;margin:0 auto 8px;display:grid;place-items:center;font-weight:800;color:#166534;background:#fff}
-    .upload-text{margin-top:8px;line-height:1.5}
-    .link{color:#2563eb;font-weight:600;text-decoration:none;font-size:12px}
+    table{width:100%;border-collapse:collapse;font-size:13px}
+    th{background:#f8fafc;text-align:left;padding:11px 12px;border:1px solid #e5e7eb;font-weight:700;color:#334155}
+    td{padding:12px;border:1px solid #e5e7eb;color:#334155}
+    .badge{display:inline-flex;padding:4px 10px;border-radius:6px;background:#dcfce7;color:#15803d;font-weight:700}
+    .actions{color:#2563eb;font-size:16px;display:flex;gap:18px}
+    .delete{color:#ef4444}
 
-    .address-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-    .address-line{grid-column:span 2}
+    .summary{padding:24px}
+    .summary h2{font-size:18px;margin-bottom:26px}
+    .summary-item{display:flex;align-items:center;gap:18px;padding:22px 0;border-bottom:1px solid #e5e7eb}
+    .summary-item:last-child{border-bottom:none}
+    .summary-icon{width:48px;height:48px;border-radius:6px;background:#eff6ff;color:#2563eb;display:grid;place-items:center;font-size:24px}
+    .summary-label{font-size:13px;color:#475569;margin-bottom:6px}
+    .summary-value{font-size:24px;font-weight:800}
+    .muted-value{font-size:18px;font-weight:700;color:#94a3b8}
 
-    .table{width:100%;border-collapse:collapse;font-size:12px}
-    .table th{background:#f8fafc;text-align:left;padding:9px 12px;border:1px solid #e5e7eb;color:#334155;font-weight:700}
-    .table td{padding:9px 12px;border:1px solid #e5e7eb;color:#334155}
-    .section-title-row{display:flex;align-items:center;justify-content:space-between;padding:12px 18px 10px}
-    .section-title-row h3{font-size:15px}
-    .btn-small{height:32px;border:1px solid #2563eb;background:#fff;color:#2563eb;border-radius:6px;padding:0 12px;font-weight:700;font-size:12px}
+    .inline-form{display:none;background:#f8fafc;border:1px solid #dbeafe;border-radius:8px;padding:18px;margin-bottom:18px}
+    .inline-form.open{display:block}
+    .form-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .field label{display:block;font-size:12px;font-weight:700;margin-bottom:7px}
+    .input,.select{height:38px;border:1px solid #cbd5e1;border-radius:6px;background:#fff;padding:0 10px;font-size:13px;width:100%}
+    .form-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:16px}
 
-    .docs{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding:0 18px 14px}
-    .doc-box{border:1px solid #e5e7eb;border-radius:6px;padding:12px;font-size:12px}
-    .doc-file{display:flex;align-items:center;gap:10px;margin-top:8px}
-    .pdf{width:28px;height:28px;background:#ef4444;color:#fff;border-radius:4px;display:grid;place-items:center;font-size:10px;font-weight:800}
-    .img{width:28px;height:28px;background:#16a34a;color:#fff;border-radius:4px;display:grid;place-items:center;font-size:10px;font-weight:800}
-
-    .declaration{padding:0 18px 14px;font-size:12px;color:#334155}
-    .check{width:14px;height:14px;vertical-align:middle;margin-right:8px;accent-color:#2563eb}
-
-    .drawer-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:26px}
-    .drawer-title h2{font-size:18px}
-    .drawer .field{margin-bottom:18px}
-    .phone-row{display:grid;grid-template-columns:72px 1fr;gap:8px}
-    .toggle-row{display:flex;justify-content:space-between;align-items:center;margin:8px 0 8px}
-    .toggle{width:38px;height:20px;background:#2563eb;border-radius:999px;position:relative}
-    .toggle:after{content:"";position:absolute;right:2px;top:2px;width:16px;height:16px;background:#fff;border-radius:50%}
-    .info{background:#eff6ff;color:#1e3a8a;border-radius:6px;padding:12px;font-size:12px;line-height:1.5;margin:14px 0 22px}
-    textarea{width:100%;height:70px;border:1px solid #cbd5e1;border-radius:5px;padding:10px;font-family:Inter;font-size:12px;resize:none}
-
-    .drawer-footer{position:fixed;right:0;bottom:0;width:360px;height:78px;background:#fff;border-top:1px solid #e5e7eb;display:flex;align-items:center;gap:16px;padding:0 22px}
-    .bottom{position:fixed;left:0;right:360px;bottom:0;height:78px;background:#fff;border-top:1px solid #e5e7eb;display:flex;align-items:center;justify-content:space-between;padding:0 32px}
-    .btn{height:40px;border-radius:6px;border:1px solid #cbd5e1;background:#fff;padding:0 22px;font-weight:700;color:#2563eb}
-    .primary{background:#2563eb;color:#fff;border-color:#2563eb}
-    .bottom-center{text-align:center;font-size:12px;color:#475569}
+    .bottom{position:fixed;left:0;right:0;bottom:0;height:78px;background:#fff;border-top:1px solid #e5e7eb;display:flex;align-items:center;justify-content:space-between;padding:0 42px;z-index:20}
+    .bottom-center{text-align:center;font-size:13px;color:#475569}
     .bar{width:360px;height:6px;background:#e5e7eb;border-radius:99px;margin-top:8px}
-    .bar span{display:block;width:25%;height:100%;background:#2563eb;border-radius:99px}
+    .bar span{display:block;width:40%;height:100%;background:#2563eb;border-radius:99px}
+
+    .modal-backdrop{display:none;position:fixed;inset:0;background:rgba(15,23,42,.45);z-index:50;align-items:center;justify-content:center}
+    .modal-backdrop.open{display:flex}
+    .modal{width:860px;background:#fff;border-radius:12px;box-shadow:0 24px 80px rgba(15,23,42,.25);overflow:hidden}
+    .modal-head{height:64px;border-bottom:1px solid #e5e7eb;display:flex;align-items:center;justify-content:space-between;padding:0 24px}
+    .modal-title{font-size:18px;font-weight:800}
+    .modal-body{padding:24px}
+    .floor-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .preview{margin-top:22px;border:1px solid #e5e7eb;border-radius:8px;background:#f8fafc;padding:16px}
+    .preview-title{font-weight:800;margin-bottom:12px}
+    .floor-preview{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+    .floor-chip{background:#fff;border:1px solid #e5e7eb;border-radius:6px;padding:10px;text-align:center;font-size:12px}
+    .modal-footer{height:68px;border-top:1px solid #e5e7eb;display:flex;align-items:center;justify-content:flex-end;gap:12px;padding:0 24px}
   </style>
 </head>
 
@@ -106,218 +104,251 @@
     </div>
   </header>
 
-  <main class="main">
-    <section class="content">
-      <h1>Society Information</h1>
-      <div class="subtitle">Configure your society profile, legal information, address, and official representatives.</div>
+  <div class="stepper">
+    <div class="step done"><div class="circle">✓</div>Society Information</div><div class="line"></div>
+    <div class="step active"><div class="circle">2</div>Property Structure</div><div class="line"></div>
+    <div class="step"><div class="circle">3</div>Unit Configuration</div><div class="line"></div>
+    <div class="step"><div class="circle">4</div>Financial Configuration</div><div class="line"></div>
+    <div class="step"><div class="circle">5</div>Review & Activate</div>
+  </div>
 
-      <div class="stepper">
-        <div class="step active"><div class="circle">1</div>Society Information</div><div class="line"></div>
-        <div class="step"><div class="circle">2</div>Property Structure</div><div class="line"></div>
-        <div class="step"><div class="circle">3</div>Financial Configuration</div><div class="line"></div>
-        <div class="step"><div class="circle">4</div>Review & Activate</div>
-      </div>
+  <main class="content">
+    <h1>Property Structure</h1>
+    <div class="subtitle">Configure the physical structure of your society before adding units.</div>
 
-      <section class="card">
-        <div class="card-header">1. Society Profile</div>
-        <div class="section-body profile-grid">
-          <div>
-            <div class="form-grid">
-              <div class="field">
-                <label>Society Name <span class="req">*</span></label>
-                <input class="input" value="Greenwood Heights Society">
-              </div>
-
-              <div class="field">
-                <label>Society Type <span class="req">*</span></label>
-                <select class="select">
-                  <option value="">Select Society Type</option>
-                  <option selected>Residential</option>
-                  <option>Commercial</option>
-                  <option>Mixed Use</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="form-grid second-row">
-              <div class="field">
-                <label>Society Registration Number</label>
-                <input class="input" value="GH/RS/2021/1567">
-              </div>
-
-              <div class="field">
-                <label>Registration Date</label>
-                <input class="input" value="15 / 06 / 2021">
-              </div>
-
-              <div class="field">
-                <label>BU Permission Number</label>
-                <input class="input" value="BU/4567/2021">
-              </div>
-
-              <div class="field">
-                <label>BU Permission Date</label>
-                <input class="input" value="20 / 07 / 2021">
-              </div>
-            </div>
-          </div>
-
-          <div class="logo-upload">
-            <label style="font-size:12px;font-weight:700">Society Logo</label>
-            <div class="upload-box">
+    <div class="layout">
+      <section>
+        <div class="card">
+          <div class="section">
+            <div class="section-head">
               <div>
-                <div class="logo-preview">GREENWOOD<br><small>HEIGHTS SOCIETY</small></div>
-                <a class="link">Change Logo</a>
-                <div class="upload-text">
-                  Drag & drop or click to upload<br>
-                  PNG, JPG, JPEG (Max. 2MB)
+                <div class="section-title">1. Development Stages</div>
+                <div class="section-subtitle">Create one or more development phases.</div>
+              </div>
+              <button class="btn" onclick="toggleForm('stageForm')">＋ Add Stage</button>
+            </div>
+
+            <div id="stageForm" class="inline-form">
+              <div class="form-grid">
+                <div class="field">
+                  <label>Stage Name *</label>
+                  <input class="input" value="Phase 2">
+                </div>
+                <div class="field">
+                  <label>Description *</label>
+                  <input class="input" value="Commercial Wing">
+                </div>
+                <div class="field">
+                  <label>Status</label>
+                  <select class="select"><option>Active</option><option>Inactive</option></select>
                 </div>
               </div>
+              <div class="form-actions">
+                <button class="btn btn-light" onclick="toggleForm('stageForm')">Cancel</button>
+                <button class="btn btn-primary" onclick="toggleForm('stageForm')">Save Stage</button>
+              </div>
             </div>
+
+            <table>
+              <thead>
+                <tr><th>Stage Name</th><th>Description</th><th>Status</th><th>Actions</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Phase 1</td><td>Residential Towers</td><td><span class="badge">Active</span></td><td><div class="actions">✎ <span class="delete">🗑</span></div></td></tr>
+              </tbody>
+            </table>
+            <div style="font-size:12px;color:#64748b;margin-top:12px">Showing 1 to 1 of 1 entries</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="section">
+            <div class="section-head">
+              <div>
+                <div class="section-title">2. Structures</div>
+                <div class="section-subtitle">Configure Towers, Wings or Blocks.</div>
+              </div>
+              <button class="btn" onclick="toggleForm('structureForm')">＋ Add Structure</button>
+            </div>
+
+            <div id="structureForm" class="inline-form">
+              <div class="form-grid">
+                <div class="field">
+                  <label>Structure Name *</label>
+                  <input class="input" value="C Tower">
+                </div>
+                <div class="field">
+                  <label>Type *</label>
+                  <select class="select"><option>Tower</option><option>Wing</option><option>Block</option><option>Club House</option></select>
+                </div>
+                <div class="field">
+                  <label>Stage *</label>
+                  <select class="select"><option>Phase 1</option></select>
+                </div>
+                <div class="field">
+                  <label>Floors *</label>
+                  <input class="input" value="12">
+                </div>
+                <div class="field">
+                  <label>Units Per Floor *</label>
+                  <input class="input" value="4">
+                </div>
+                <div class="field">
+                  <label>Status</label>
+                  <select class="select"><option>Active</option><option>Inactive</option></select>
+                </div>
+              </div>
+              <div class="form-actions">
+                <button class="btn btn-light" onclick="toggleForm('structureForm')">Cancel</button>
+                <button class="btn btn-primary" onclick="toggleForm('structureForm')">Save Structure</button>
+              </div>
+            </div>
+
+            <table>
+              <thead>
+                <tr><th>Structure Name</th><th>Type</th><th>Stage</th><th>Floors</th><th>Status</th><th>Actions</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>A Tower</td><td>Tower</td><td>Phase 1</td><td>12</td><td><span class="badge">Active</span></td><td><div class="actions">✎ <span class="delete">🗑</span></div></td></tr>
+                <tr><td>B Tower</td><td>Tower</td><td>Phase 1</td><td>10</td><td><span class="badge">Active</span></td><td><div class="actions">✎ <span class="delete">🗑</span></div></td></tr>
+                <tr><td>Club House</td><td>Block</td><td>Phase 1</td><td>2</td><td><span class="badge">Active</span></td><td><div class="actions">✎ <span class="delete">🗑</span></div></td></tr>
+              </tbody>
+            </table>
+            <div style="font-size:12px;color:#64748b;margin-top:12px">Showing 1 to 3 of 3 entries</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="section">
+            <div class="section-head">
+              <div>
+                <div class="section-title">3. Floor Configuration</div>
+                <div class="section-subtitle">Configure floors for each structure.</div>
+              </div>
+              <button class="btn" onclick="openModal()">⚙ Configure Floors</button>
+            </div>
+
+            <table>
+              <thead>
+                <tr><th>Structure</th><th>Total Floors</th><th>Numbering Format</th><th>Actions</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>A Tower</td><td>12</td><td>Ground + 11</td><td><div class="actions">⚙</div></td></tr>
+                <tr><td>B Tower</td><td>10</td><td>Ground + 9</td><td><div class="actions">⚙</div></td></tr>
+                <tr><td>Club House</td><td>2</td><td>Ground + 1</td><td><div class="actions">⚙</div></td></tr>
+              </tbody>
+            </table>
+            <div style="font-size:12px;color:#64748b;margin-top:12px">Showing 1 to 3 of 3 entries</div>
           </div>
         </div>
       </section>
 
-      <section class="card">
-        <div class="card-header">2. Address Information</div>
-        <div class="section-body address-grid">
-          <div class="field"><label>Country <span class="req">*</span></label><select class="select"><option>India</option></select></div>
-          <div class="field"><label>State <span class="req">*</span></label><select class="select"><option>Maharashtra</option></select></div>
-          <div class="field"><label>City <span class="req">*</span></label><select class="select"><option>Pune</option></select></div>
-          <div class="field"><label>PIN Code <span class="req">*</span></label><input class="input" value="411045"></div>
-          <div class="field address-line"><label>Address Line 1 <span class="req">*</span></label><input class="input" value="Greenwood Heights, Near Maple Street"></div>
-          <div class="field"><label>Address Line 2</label><input class="input" value="Baner Road"></div>
-          <div class="field"><label>Landmark</label><input class="input" value="Opp. Westside Complex"></div>
-        </div>
-      </section>
+      <aside class="card summary">
+        <h2>Property Summary</h2>
 
-      <section class="card">
-        <div class="section-title-row">
-          <h3>3. Society Representatives ⓘ</h3>
-          <button class="btn-small">＋ Add Representative</button>
+        <div class="summary-item">
+          <div class="summary-icon">▣</div>
+          <div>
+            <div class="summary-label">Development Stages</div>
+            <div class="summary-value">1</div>
+          </div>
         </div>
 
-        <div style="padding:0 18px 12px">
-          <table class="table">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Representative Type</th>
-                <th>Custom Designation</th>
-                <th>Mobile Number</th>
-                <th>Email Address</th>
-                <th>Primary Contact</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Rahul Shah</td>
-                <td>Chairman</td>
-                <td>Chairman</td>
-                <td>+91 98765 43210</td>
-                <td>rahul@email.com</td>
-                <td>★ Primary</td>
-                <td>✎ 🗑</td>
-              </tr>
-              <tr>
-                <td>Priya Mehta</td>
-                <td>Committee Member</td>
-                <td>IT Coordinator</td>
-                <td>+91 98221 33445</td>
-                <td>priya.mehta@email.com</td>
-                <td>—</td>
-                <td>✎ 🗑</td>
-              </tr>
-            </tbody>
-          </table>
-          <div style="font-size:12px;color:#64748b;margin-top:8px">Showing 1 to 2 of 2 entries</div>
+        <div class="summary-item">
+          <div class="summary-icon">🏢</div>
+          <div>
+            <div class="summary-label">Structures</div>
+            <div class="summary-value">3</div>
+          </div>
         </div>
-      </section>
 
-      <section class="card">
-        <div class="card-header">4. Legal Documents <span style="font-size:11px;color:#64748b;margin-left:14px">Supported formats: PDF, PNG, JPG, JPEG (Max. 10MB)</span></div>
-        <div class="docs">
-          <div class="doc-box"><b>Registration Certificate <span class="req">*</span></b><div class="doc-file"><div class="pdf">PDF</div><div>Registration_Certificate.pdf<br><span style="color:#64748b">1.2 MB</span></div></div></div>
-          <div class="doc-box"><b>BU Permission Certificate</b><div class="doc-file"><div class="img">IMG</div><div>BU_Permission.jpg<br><span style="color:#64748b">1.1 MB</span></div></div></div>
-          <div class="doc-box"><b>Other Supporting Documents</b><div class="doc-file"><div class="pdf" style="background:#94a3b8">DOC</div><div>NOC_Letter.pdf<br><span style="color:#64748b">0.9 MB</span></div></div></div>
+        <div class="summary-item">
+          <div class="summary-icon">▤</div>
+          <div>
+            <div class="summary-label">Total Floors</div>
+            <div class="summary-value">24</div>
+          </div>
         </div>
-      </section>
 
-      <section class="card">
-        <div class="card-header">5. Declaration</div>
-        <div class="declaration"><input type="checkbox" class="check" checked>I confirm that I am authorized to register this society and that the information provided is accurate. <span class="req">*</span></div>
-      </section>
-    </section>
-
-    <aside class="drawer">
-      <div class="drawer-title"><h2>Add Representative</h2><span style="font-size:22px">×</span></div>
-
-      <div class="field">
-        <label>Full Name <span class="req">*</span></label>
-        <input class="input" value="Amit Deshmukh">
-      </div>
-
-      <div class="field">
-        <label>Representative Type <span class="req">*</span></label>
-        <select class="select">
-          <option value="">Select Representative Type</option>
-          <option>Chairman</option>
-          <option>Secretary</option>
-          <option selected>Treasurer</option>
-          <option>Vice Chairman</option>
-          <option>Joint Secretary</option>
-          <option>Committee Member</option>
-          <option>Society Manager</option>
-          <option>Builder Representative</option>
-          <option>Authorized Signatory</option>
-          <option>Other</option>
-        </select>
-      </div>
-
-      <div class="field">
-        <label>Custom Designation <span class="req">*</span></label>
-        <input class="input" type="text" value="Treasurer" placeholder="e.g. IT Coordinator, Legal Advisor">
-      </div>
-
-      <div class="field">
-        <label>Mobile Number <span class="req">*</span></label>
-        <div class="phone-row">
-          <select class="select"><option>+91</option></select>
-          <input class="input" value="99887 66554">
+        <div class="summary-item">
+          <div class="summary-icon">⌂</div>
+          <div>
+            <div class="summary-label">Estimated Units</div>
+            <div class="muted-value">Not Configured</div>
+          </div>
         </div>
-      </div>
-
-      <div class="field">
-        <label>Email Address</label>
-        <input class="input" value="amit.deshmukh@email.com">
-      </div>
-
-      <div class="toggle-row">
-        <div><b>Primary Contact</b><div style="font-size:12px;color:#64748b;margin-top:6px">This person will be marked as the primary contact.</div></div>
-        <div class="toggle"></div>
-      </div>
-
-      <div class="info">ⓘ If you set this person as primary contact, the current primary contact will be removed.</div>
-
-      <div class="field">
-        <label>Remarks</label>
-        <textarea>Handles financial matters and bank operations.</textarea>
-        <div style="text-align:right;color:#64748b;font-size:12px">46 / 250</div>
-      </div>
-    </aside>
+      </aside>
+    </div>
   </main>
 
   <div class="bottom">
-    <div style="display:flex;gap:14px"><button class="btn">↪ Save as Draft</button><button class="btn">Cancel</button></div>
-    <div class="bottom-center">Step 1 of 4<br>25% Complete<div class="bar"><span></span></div></div>
-    <a href="property-structure.html" class="btn primary" style="text-decoration:none;display:flex;align-items:center">Save & Continue →</a>
-  </div>
-
-  <div class="drawer-footer">
-    <button class="btn" style="flex:1">Cancel</button>
-    <button class="btn primary" style="flex:1">Save →</button>
+    <a href="society-information.html" class="btn" style="text-decoration:none;display:flex;align-items:center">← Back</a>
+    <button class="btn">▣ Save as Draft</button>
+    <div class="bottom-center">
+      Step 2 of 5<br>40% Complete
+      <div class="bar"><span></span></div>
+    </div>
+    <a href="unit-configuration.html" class="btn btn-primary" style="text-decoration:none;display:flex;align-items:center">Save & Continue →</a>
   </div>
 </div>
+
+<div id="floorModal" class="modal-backdrop">
+  <div class="modal">
+    <div class="modal-head">
+      <div class="modal-title">Configure Floors</div>
+      <button class="btn btn-light" onclick="closeModal()">×</button>
+    </div>
+
+    <div class="modal-body">
+      <div class="floor-grid">
+        <div class="field">
+          <label>Structure *</label>
+          <select class="select"><option>A Tower</option><option>B Tower</option><option>Club House</option></select>
+        </div>
+        <div class="field">
+          <label>Total Floors *</label>
+          <input class="input" value="12">
+        </div>
+        <div class="field">
+          <label>Ground Floor Name</label>
+          <input class="input" value="Ground">
+        </div>
+        <div class="field">
+          <label>Numbering Format *</label>
+          <select class="select"><option>Ground + Number</option><option>Floor + Unit</option></select>
+        </div>
+      </div>
+
+      <div class="preview">
+        <div class="preview-title">Floor Numbering Preview</div>
+        <div class="floor-preview">
+          <div class="floor-chip"><b>Ground</b><br>G-01, G-02, G-03</div>
+          <div class="floor-chip"><b>1st Floor</b><br>101, 102, 103</div>
+          <div class="floor-chip"><b>2nd Floor</b><br>201, 202, 203</div>
+          <div class="floor-chip"><b>3rd Floor</b><br>301, 302, 303</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn btn-light" onclick="closeModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="closeModal()">Save Configuration</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  function toggleForm(id){
+    document.getElementById(id).classList.toggle("open");
+  }
+
+  function openModal(){
+    document.getElementById("floorModal").classList.add("open");
+  }
+
+  function closeModal(){
+    document.getElementById("floorModal").classList.remove("open");
+  }
+</script>
 </body>
 </html>
