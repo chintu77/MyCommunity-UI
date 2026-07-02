@@ -5,187 +5,212 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Society Information | MyCommunity</title>
 
-  <link rel="stylesheet" href="../../assets/css/style.css" />
-  <link rel="stylesheet" href="../../assets/css/components.css" />
-
   <style>
-    body{margin:0;background:#f3f4f6;font-family:Inter,Arial,sans-serif;color:#111827}
-    .header{height:72px;background:#fff;border-bottom:1px solid #e5e7eb;display:flex;align-items:center;justify-content:space-between;padding:0 48px}
-    .logo{display:flex;align-items:center;gap:14px}
-    .logo-icon{width:42px;height:42px;border-radius:10px;background:#2563eb;color:#fff;display:grid;place-items:center;font-weight:800}
-    .logo-title{font-size:22px;font-weight:800}
-    .profile{display:flex;align-items:center;gap:14px}
-    .avatar{width:42px;height:42px;border-radius:50%;background:#2563eb;color:#fff;display:grid;place-items:center;font-weight:700}
-    .page{padding:36px 48px 100px}
-    .top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:28px}
-    h1{margin:0;font-size:32px;letter-spacing:-.8px}
-    .subtitle{margin-top:8px;color:#6b7280;font-size:15px}
-    .step{font-size:14px;color:#6b7280;text-align:right}
-    .progress{width:180px;height:8px;background:#e5e7eb;border-radius:99px;margin-top:10px;overflow:hidden}
-    .progress span{display:block;width:20%;height:100%;background:#2563eb}
-    .layout{display:grid;grid-template-columns:1fr 320px;gap:24px}
-    .card{background:#fff;border:1px solid #e5e7eb;border-radius:12px;box-shadow:0 2px 10px rgba(15,23,42,.05)}
-    .main-card{padding:28px}
-    .section-title{font-size:18px;font-weight:800;margin-bottom:20px}
-    .form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-    .field label{display:block;font-size:13px;font-weight:700;margin-bottom:8px}
-    .field input,.field select,.field textarea{width:100%;border:1px solid #d1d5db;border-radius:8px;padding:0 14px;font-size:14px;background:#fff}
-    .field input,.field select{height:44px}
-    .field textarea{height:92px;padding-top:12px;resize:none}
-    .full{grid-column:1/-1}
-    .side-card{padding:22px}
-    .summary-item{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid #e5e7eb;font-size:14px}
-    .summary-item:last-child{border-bottom:none}
-    .badge{display:inline-flex;padding:5px 10px;border-radius:999px;background:#eff6ff;color:#2563eb;font-size:12px;font-weight:700}
-    .footer{position:fixed;left:0;right:0;bottom:0;height:72px;background:#fff;border-top:1px solid #e5e7eb;display:flex;align-items:center;justify-content:space-between;padding:0 48px}
-    .btn-row{display:flex;gap:12px}
-    .btn{height:42px;padding:0 18px;border-radius:8px;border:1px solid #d1d5db;background:#fff;font-weight:700;cursor:pointer}
-    .btn-primary{background:#2563eb;color:#fff;border-color:#2563eb}
+    @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:Inter,Arial,sans-serif;background:#f8fafc;color:#0f172a;font-size:14px}
+    .page{min-height:100vh;padding-bottom:78px}
+
+    .topbar{height:64px;background:#fff;border-bottom:1px solid #e5e7eb;display:flex;align-items:center;justify-content:space-between;padding:0 28px}
+    .brand{display:flex;align-items:center;gap:12px;font-size:20px;font-weight:800}
+    .brand-icon{width:36px;height:36px;border:3px solid #2563eb;border-radius:8px;display:grid;place-items:center;color:#2563eb;font-weight:800}
+    .wizard-title{position:absolute;left:50%;transform:translateX(-50%);font-weight:700;font-size:16px}
+    .user{display:flex;align-items:center;gap:16px}
+    .avatar{width:34px;height:34px;border-radius:50%;background:#dbeafe;display:grid;place-items:center;font-weight:700;color:#1d4ed8}
+
+    .main{display:grid;grid-template-columns:1fr 360px;gap:0}
+    .content{padding:18px 34px 24px 60px}
+    .drawer{background:#fff;border-left:1px solid #e5e7eb;padding:20px 22px}
+
+    h1{font-size:26px;letter-spacing:-.5px;margin-bottom:6px}
+    .subtitle{color:#475569;font-size:13px;margin-bottom:22px}
+
+    .stepper{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+    .step{display:flex;align-items:center;gap:9px;color:#475569;font-size:13px;white-space:nowrap}
+    .step.active{color:#2563eb;font-weight:700}
+    .circle{width:30px;height:30px;border-radius:50%;border:1px solid #cbd5e1;display:grid;place-items:center;background:#fff;font-weight:700}
+    .active .circle{background:#2563eb;color:#fff;border-color:#2563eb}
+    .line{height:1px;background:#cbd5e1;flex:1}
+
+    .card{background:#fff;border:1px solid #e5e7eb;border-radius:8px;margin-bottom:10px}
+    .card-header{font-weight:800;padding:14px 18px 8px}
+    .section-body{padding:0 18px 14px}
+
+    .profile-grid{display:grid;grid-template-columns:1fr 300px;gap:24px}
+    .form-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .field label{display:block;font-size:12px;font-weight:600;margin-bottom:7px;color:#0f172a}
+    .req{color:#dc2626;margin-left:2px}
+    .input,.select{height:34px;border:1px solid #cbd5e1;border-radius:5px;background:#fff;padding:0 10px;font-size:12px;width:100%;color:#334155}
+    .select{appearance:auto}
+    .wide2{grid-column:span 2}
+
+    .logo-upload{border-left:1px dashed #cbd5e1;padding-left:22px}
+    .upload-box{height:150px;border:1px dashed #cbd5e1;border-radius:7px;display:flex;align-items:center;justify-content:center;text-align:center;color:#64748b;font-size:12px}
+    .logo-preview{width:128px;height:96px;border:1px solid #e5e7eb;border-radius:6px;margin:0 auto 8px;display:grid;place-items:center;font-weight:800;color:#166534;background:#fff}
+    .link{color:#2563eb;font-weight:600;text-decoration:none;font-size:12px}
+
+    .address-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .address-line{grid-column:span 2}
+
+    .table{width:100%;border-collapse:collapse;font-size:12px}
+    .table th{background:#f8fafc;text-align:left;padding:9px 12px;border:1px solid #e5e7eb;color:#334155;font-weight:700}
+    .table td{padding:9px 12px;border:1px solid #e5e7eb;color:#334155}
+    .section-title-row{display:flex;align-items:center;justify-content:space-between;padding:12px 18px 10px}
+    .section-title-row h3{font-size:15px}
+    .btn-small{height:32px;border:1px solid #2563eb;background:#fff;color:#2563eb;border-radius:6px;padding:0 12px;font-weight:700;font-size:12px}
+
+    .docs{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding:0 18px 14px}
+    .doc-box{border:1px solid #e5e7eb;border-radius:6px;padding:12px;font-size:12px}
+    .doc-file{display:flex;align-items:center;gap:10px;margin-top:8px}
+    .pdf{width:28px;height:28px;background:#ef4444;color:#fff;border-radius:4px;display:grid;place-items:center;font-size:10px;font-weight:800}
+    .img{width:28px;height:28px;background:#16a34a;color:#fff;border-radius:4px;display:grid;place-items:center;font-size:10px;font-weight:800}
+
+    .declaration{padding:0 18px 14px;font-size:12px;color:#334155}
+    .check{width:14px;height:14px;vertical-align:middle;margin-right:8px;accent-color:#2563eb}
+
+    .drawer-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:26px}
+    .drawer-title h2{font-size:18px}
+    .drawer .field{margin-bottom:20px}
+    .phone-row{display:grid;grid-template-columns:72px 1fr;gap:8px}
+    .toggle-row{display:flex;justify-content:space-between;align-items:center;margin:8px 0 8px}
+    .toggle{width:38px;height:20px;background:#2563eb;border-radius:999px;position:relative}
+    .toggle:after{content:"";position:absolute;right:2px;top:2px;width:16px;height:16px;background:#fff;border-radius:50%}
+    .info{background:#eff6ff;color:#1e3a8a;border-radius:6px;padding:12px;font-size:12px;line-height:1.5;margin:14px 0 22px}
+    textarea{width:100%;height:70px;border:1px solid #cbd5e1;border-radius:5px;padding:10px;font-family:Inter;font-size:12px;resize:none}
+
+    .drawer-footer{position:fixed;right:0;bottom:0;width:360px;height:78px;background:#fff;border-top:1px solid #e5e7eb;display:flex;align-items:center;gap:16px;padding:0 22px}
+    .bottom{position:fixed;left:0;right:360px;bottom:0;height:78px;background:#fff;border-top:1px solid #e5e7eb;display:flex;align-items:center;justify-content:space-between;padding:0 32px}
+    .btn{height:40px;border-radius:6px;border:1px solid #cbd5e1;background:#fff;padding:0 22px;font-weight:700;color:#2563eb}
+    .primary{background:#2563eb;color:#fff;border-color:#2563eb}
+    .bottom-center{text-align:center;font-size:12px;color:#475569}
+    .bar{width:360px;height:6px;background:#e5e7eb;border-radius:99px;margin-top:8px}
+    .bar span{display:block;width:25%;height:100%;background:#2563eb;border-radius:99px}
   </style>
 </head>
 
 <body>
-  <header class="header">
-    <div class="logo">
-      <div class="logo-icon">MC</div>
-      <div class="logo-title">MyCommunity</div>
-    </div>
-
-    <div class="profile">
-      <div style="text-align:right">
-        <div style="font-weight:700">Rahul Shah</div>
-        <div style="font-size:13px;color:#6b7280">Society Owner</div>
-      </div>
+<div class="page">
+  <header class="topbar">
+    <div class="brand"><div class="brand-icon">⌂</div>MyCommunity</div>
+    <div class="wizard-title">Society Setup Wizard</div>
+    <div class="user">
       <div class="avatar">RS</div>
+      <b>Rahul Shah</b>
+      <span>⌄</span>
+      <span style="color:#cbd5e1">|</span>
+      <span>↪ Logout</span>
     </div>
   </header>
 
-  <main class="page">
-    <div class="top">
-      <div>
-        <h1>Society Information</h1>
-        <div class="subtitle">Enter basic registration, address and contact details for your society.</div>
+  <main class="main">
+    <section class="content">
+      <h1>Society Information</h1>
+      <div class="subtitle">Configure your society profile, legal information, address, and official representatives.</div>
+
+      <div class="stepper">
+        <div class="step active"><div class="circle">1</div>Society Information</div><div class="line"></div>
+        <div class="step"><div class="circle">2</div>Property Structure</div><div class="line"></div>
+        <div class="step"><div class="circle">3</div>Financial Configuration</div><div class="line"></div>
+        <div class="step"><div class="circle">4</div>Review & Activate</div>
       </div>
 
-      <div class="step">
-        Step 1 of 5
-        <div class="progress"><span></span></div>
-      </div>
-    </div>
-
-    <div class="layout">
-      <section class="card main-card">
-        <div class="section-title">Basic Details</div>
-
-        <div class="form-grid">
-          <div class="field">
-            <label>Society Name</label>
-            <input value="Green Valley CHS Ltd." />
+      <section class="card">
+        <div class="card-header">1. Society Profile</div>
+        <div class="section-body profile-grid">
+          <div class="form-grid">
+            <div class="field wide2"><label>Society Name <span class="req">*</span></label><input class="input" value="Greenwood Heights Society"></div>
+            <div class="field wide2"><label>Society Type <span class="req">*</span></label><select class="select"><option>Residential Society</option></select></div>
+            <div class="field"><label>Society Registration Number</label><input class="input" value="GH/RS/2021/1567"></div>
+            <div class="field"><label>Registration Date</label><input class="input" value="15 / 06 / 2021"></div>
+            <div class="field"><label>BU Permission Number</label><input class="input" value="BU/4567/2021"></div>
+            <div class="field"><label>BU Permission Date</label><input class="input" value="20 / 07 / 2021"></div>
           </div>
 
-          <div class="field">
-            <label>Registration Number</label>
-            <input placeholder="Enter registration number" />
-          </div>
-
-          <div class="field">
-            <label>Society Type</label>
-            <select>
-              <option>Co-operative Housing Society</option>
-              <option>Apartment Association</option>
-              <option>Residential Welfare Association</option>
-            </select>
-          </div>
-
-          <div class="field">
-            <label>Established Year</label>
-            <input placeholder="2020" />
-          </div>
-
-          <div class="field full">
-            <label>Registered Address</label>
-            <textarea placeholder="Enter complete society address"></textarea>
-          </div>
-
-          <div class="field">
-            <label>Country</label>
-            <select><option>India</option></select>
-          </div>
-
-          <div class="field">
-            <label>State</label>
-            <select><option>Gujarat</option></select>
-          </div>
-
-          <div class="field">
-            <label>City</label>
-            <select><option>Vadodara</option></select>
-          </div>
-
-          <div class="field">
-            <label>Pincode</label>
-            <input placeholder="390001" />
-          </div>
-
-          <div class="field">
-            <label>Primary Contact Name</label>
-            <input value="Rahul Shah" />
-          </div>
-
-          <div class="field">
-            <label>Primary Contact Number</label>
-            <input placeholder="+91 9876543210" />
-          </div>
-
-          <div class="field">
-            <label>Support Email</label>
-            <input placeholder="support@mycommunity.com" />
-          </div>
-
-          <div class="field">
-            <label>Official Website</label>
-            <input placeholder="https://greenvalleychs.com" />
+          <div class="logo-upload">
+            <label style="font-size:12px;font-weight:700">Society Logo</label>
+            <div class="upload-box">
+              <div>
+                <div class="logo-preview">GREENWOOD<br><small>HEIGHTS SOCIETY</small></div>
+                <a class="link">Change Logo</a>
+                <div style="margin-top:10px">Drag & drop or click to upload</div>
+                <div>PNG, JPG, JPEG (Max. 2MB)</div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <aside class="card side-card">
-        <div class="section-title">Setup Summary</div>
-
-        <div class="summary-item">
-          <span>Status</span>
-          <span class="badge">Draft</span>
+      <section class="card">
+        <div class="card-header">2. Address Information</div>
+        <div class="section-body address-grid">
+          <div class="field"><label>Country <span class="req">*</span></label><select class="select"><option>India</option></select></div>
+          <div class="field"><label>State <span class="req">*</span></label><select class="select"><option>Maharashtra</option></select></div>
+          <div class="field"><label>City <span class="req">*</span></label><select class="select"><option>Pune</option></select></div>
+          <div class="field"><label>PIN Code <span class="req">*</span></label><input class="input" value="411045"></div>
+          <div class="field address-line"><label>Address Line 1 <span class="req">*</span></label><input class="input" value="Greenwood Heights, Near Maple Street"></div>
+          <div class="field"><label>Address Line 2</label><input class="input" value="Baner Road"></div>
+          <div class="field"><label>Landmark</label><input class="input" value="Opp. Westside Complex"></div>
         </div>
+      </section>
 
-        <div class="summary-item">
-          <span>Current Step</span>
-          <b>Society Info</b>
+      <section class="card">
+        <div class="section-title-row">
+          <h3>3. Society Representatives ⓘ</h3>
+          <button class="btn-small">＋ Add Representative</button>
         </div>
+        <div style="padding:0 18px 12px">
+          <table class="table">
+            <thead><tr><th>Name</th><th>Designation</th><th>Mobile Number</th><th>Email Address</th><th>Primary Contact</th><th>Actions</th></tr></thead>
+            <tbody>
+              <tr><td>Rahul Shah</td><td>Chairman</td><td>+91 98765 43210</td><td>rahul@email.com</td><td>★ Primary</td><td>✎ 🗑</td></tr>
+              <tr><td>Priya Mehta</td><td>Secretary</td><td>+91 98221 33445</td><td>priya.mehta@email.com</td><td>—</td><td>✎ 🗑</td></tr>
+            </tbody>
+          </table>
+          <div style="font-size:12px;color:#64748b;margin-top:8px">Showing 1 to 2 of 2 entries</div>
+        </div>
+      </section>
 
-        <div class="summary-item">
-          <span>Completion</span>
-          <b>20%</b>
+      <section class="card">
+        <div class="card-header">4. Legal Documents <span style="font-size:11px;color:#64748b;margin-left:14px">Supported formats: PDF, PNG, JPG, JPEG (Max. 10MB)</span></div>
+        <div class="docs">
+          <div class="doc-box"><b>Registration Certificate <span class="req">*</span></b><div class="doc-file"><div class="pdf">PDF</div><div>Registration_Certificate.pdf<br><span style="color:#64748b">1.2 MB</span></div></div></div>
+          <div class="doc-box"><b>BU Permission Certificate</b><div class="doc-file"><div class="img">IMG</div><div>BU_Permission.jpg<br><span style="color:#64748b">1.1 MB</span></div></div></div>
+          <div class="doc-box"><b>Other Supporting Documents</b><div class="doc-file"><div class="pdf" style="background:#94a3b8">DOC</div><div>NOC_Letter.pdf<br><span style="color:#64748b">0.9 MB</span></div></div></div>
         </div>
+      </section>
 
-        <div class="summary-item">
-          <span>Required Fields</span>
-          <b>12</b>
-        </div>
+      <section class="card">
+        <div class="card-header">5. Declaration</div>
+        <div class="declaration"><input type="checkbox" class="check" checked>I confirm that I am authorized to register this society and that the information provided is accurate. <span class="req">*</span></div>
+      </section>
+    </section>
 
-        <div style="margin-top:20px;color:#6b7280;font-size:13px;line-height:1.6">
-          This information will be shown in the admin portal, invoices, notices and official society records.
-        </div>
-      </aside>
-    </div>
+    <aside class="drawer">
+      <div class="drawer-title"><h2>Add Representative</h2><span style="font-size:22px">×</span></div>
+
+      <div class="field"><label>Full Name <span class="req">*</span></label><input class="input" value="Amit Deshmukh"></div>
+      <div class="field"><label>Designation <span class="req">*</span></label><select class="select"><option>Treasurer</option></select></div>
+      <div class="field"><label>Mobile Number <span class="req">*</span></label><div class="phone-row"><select class="select"><option>+91</option></select><input class="input" value="99887 66554"></div></div>
+      <div class="field"><label>Email Address</label><input class="input" value="amit.deshmukh@email.com"></div>
+
+      <div class="toggle-row"><div><b>Primary Contact</b><div style="font-size:12px;color:#64748b;margin-top:6px">This person will be marked as the primary contact.</div></div><div class="toggle"></div></div>
+      <div class="info">ⓘ If you set this person as primary contact, the current primary contact will be removed.</div>
+
+      <div class="field"><label>Remarks</label><textarea>Handles financial matters and bank operations.</textarea><div style="text-align:right;color:#64748b;font-size:12px">46 / 250</div></div>
+    </aside>
   </main>
 
-  <footer class="footer">
-    <a href="welcome.html" style="color:#2563eb;text-decoration:none;font-weight:700">← Back</a>
+  <div class="bottom">
+    <div style="display:flex;gap:14px"><button class="btn">↪ Save as Draft</button><button class="btn">Cancel</button></div>
+    <div class="bottom-center">Step 1 of 4<br>25% Complete<div class="bar"><span></span></div></div>
+    <a href="property-structure.html" class="btn primary" style="text-decoration:none;display:flex;align-items:center">Save & Continue →</a>
+  </div>
 
-    <div class="btn-row">
-      <button class="btn">Save as Draft</button>
-      <a href="property-structure.html" class="btn btn-primary" style="display:flex;align-items:center;text-decoration:none">Save & Continue</a>
-    </div>
-  </footer>
+  <div class="drawer-footer">
+    <button class="btn" style="flex:1">Cancel</button>
+    <button class="btn primary" style="flex:1">Save Representative →</button>
+  </div>
+</div>
 </body>
 </html>
