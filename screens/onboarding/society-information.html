@@ -12,8 +12,9 @@
     body{font-family:Inter,Arial,sans-serif;background:#f8fafc;color:#0f172a;font-size:14px}
     .page{min-height:100vh;padding-bottom:78px}
     .topbar{height:64px;background:#fff;border-bottom:1px solid #e5e7eb;display:flex;align-items:center;justify-content:space-between;padding:0 28px}
-    .brand{display:flex;align-items:center;gap:12px;font-size:20px;font-weight:800}
-    .brand-icon{width:36px;height:36px;border:3px solid #2563eb;border-radius:8px;display:grid;place-items:center;color:#2563eb;font-weight:800}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand-icon{width:42px;height:42px;border-radius:10px;background:#2563eb;color:#fff;display:grid;place-items:center;font-weight:800}
+    .brand-title{font-size:22px;font-weight:800;letter-spacing:-.4px;color:#111827}
     .wizard-title{position:absolute;left:50%;transform:translateX(-50%);font-weight:700;font-size:16px}
     .user{display:flex;align-items:center;gap:16px}
     .avatar{width:34px;height:34px;border-radius:50%;background:#dbeafe;display:grid;place-items:center;font-weight:700;color:#1d4ed8}
@@ -42,7 +43,6 @@
     .field label{display:block;font-size:12px;font-weight:600;margin-bottom:7px;color:#0f172a;white-space:nowrap}
     .req{color:#dc2626;margin-left:2px}
     .input,.select{height:34px;border:1px solid #cbd5e1;border-radius:5px;background:#fff;padding:0 10px;font-size:12px;width:100%;color:#334155}
-    .select{appearance:auto}
 
     .logo-upload{border-left:1px dashed #cbd5e1;padding-left:22px}
     .upload-box{height:170px;border:1px dashed #cbd5e1;border-radius:7px;display:flex;align-items:center;justify-content:center;text-align:center;color:#64748b;font-size:12px;padding:12px}
@@ -71,7 +71,7 @@
 
     .drawer-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:26px}
     .drawer-title h2{font-size:18px}
-    .drawer .field{margin-bottom:20px}
+    .drawer .field{margin-bottom:18px}
     .phone-row{display:grid;grid-template-columns:72px 1fr;gap:8px}
     .toggle-row{display:flex;justify-content:space-between;align-items:center;margin:8px 0 8px}
     .toggle{width:38px;height:20px;background:#2563eb;border-radius:999px;position:relative}
@@ -93,14 +93,9 @@
 <div class="page">
   <header class="topbar">
     <div class="brand">
-    <img src="../../assets/images/logo.svg"
-         class="brand-logo"
-         alt="MyCommunity">
-
-    <span class="brand-title">
-        MyCommunity
-    </span>
-</div>
+      <div class="brand-icon">MC</div>
+      <span class="brand-title">MyCommunity</span>
+    </div>
     <div class="wizard-title">Society Setup Wizard</div>
     <div class="user">
       <div class="avatar">RS</div>
@@ -136,10 +131,10 @@
               <div class="field">
                 <label>Society Type <span class="req">*</span></label>
                 <select class="select">
-                <option value="">Select Society Type</option>
-                <option>Residential</option>
-                <option>Commercial</option>
-                <option>Mixed Use</option>
+                  <option value="">Select Society Type</option>
+                  <option selected>Residential</option>
+                  <option>Commercial</option>
+                  <option>Mixed Use</option>
                 </select>
               </div>
             </div>
@@ -201,12 +196,39 @@
           <h3>3. Society Representatives ⓘ</h3>
           <button class="btn-small">＋ Add Representative</button>
         </div>
+
         <div style="padding:0 18px 12px">
           <table class="table">
-            <thead><tr><th>Name</th><th>Designation</th><th>Mobile Number</th><th>Email Address</th><th>Primary Contact</th><th>Actions</th></tr></thead>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Representative Type</th>
+                <th>Custom Designation</th>
+                <th>Mobile Number</th>
+                <th>Email Address</th>
+                <th>Primary Contact</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
             <tbody>
-              <tr><td>Rahul Shah</td><td>Chairman</td><td>+91 98765 43210</td><td>rahul@email.com</td><td>★ Primary</td><td>✎ 🗑</td></tr>
-              <tr><td>Priya Mehta</td><td>Secretary</td><td>+91 98221 33445</td><td>priya.mehta@email.com</td><td>—</td><td>✎ 🗑</td></tr>
+              <tr>
+                <td>Rahul Shah</td>
+                <td>Chairman</td>
+                <td>Chairman</td>
+                <td>+91 98765 43210</td>
+                <td>rahul@email.com</td>
+                <td>★ Primary</td>
+                <td>✎ 🗑</td>
+              </tr>
+              <tr>
+                <td>Priya Mehta</td>
+                <td>Committee Member</td>
+                <td>IT Coordinator</td>
+                <td>+91 98221 33445</td>
+                <td>priya.mehta@email.com</td>
+                <td>—</td>
+                <td>✎ 🗑</td>
+              </tr>
             </tbody>
           </table>
           <div style="font-size:12px;color:#64748b;margin-top:8px">Showing 1 to 2 of 2 entries</div>
@@ -231,15 +253,58 @@
     <aside class="drawer">
       <div class="drawer-title"><h2>Add Representative</h2><span style="font-size:22px">×</span></div>
 
-      <div class="field"><label>Full Name <span class="req">*</span></label><input class="input" value="Amit Deshmukh"></div>
-      <div class="field"><label>Designation <span class="req">*</span></label><select class="select"><option>Treasurer</option></select></div>
-      <div class="field"><label>Mobile Number <span class="req">*</span></label><div class="phone-row"><select class="select"><option>+91</option></select><input class="input" value="99887 66554"></div></div>
-      <div class="field"><label>Email Address</label><input class="input" value="amit.deshmukh@email.com"></div>
+      <div class="field">
+        <label>Full Name <span class="req">*</span></label>
+        <input class="input" value="Amit Deshmukh">
+      </div>
 
-      <div class="toggle-row"><div><b>Primary Contact</b><div style="font-size:12px;color:#64748b;margin-top:6px">This person will be marked as the primary contact.</div></div><div class="toggle"></div></div>
+      <div class="field">
+        <label>Representative Type <span class="req">*</span></label>
+        <select class="select">
+          <option value="">Select Representative Type</option>
+          <option>Chairman</option>
+          <option>Secretary</option>
+          <option selected>Treasurer</option>
+          <option>Vice Chairman</option>
+          <option>Joint Secretary</option>
+          <option>Committee Member</option>
+          <option>Society Manager</option>
+          <option>Builder Representative</option>
+          <option>Authorized Signatory</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>Custom Designation <span class="req">*</span></label>
+        <input class="input" type="text" value="Treasurer" placeholder="e.g. IT Coordinator, Legal Advisor">
+      </div>
+
+      <div class="field">
+        <label>Mobile Number <span class="req">*</span></label>
+        <div class="phone-row">
+          <select class="select"><option>+91</option></select>
+          <input class="input" value="99887 66554">
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Email Address</label>
+        <input class="input" value="amit.deshmukh@email.com">
+      </div>
+
+      <div class="toggle-row">
+        <div><b>Primary Contact</b><div style="font-size:12px;color:#64748b;margin-top:6px">This person will be marked as the primary contact.</div></div>
+        <div class="toggle"></div>
+      </div>
+
       <div class="info">ⓘ If you set this person as primary contact, the current primary contact will be removed.</div>
 
-      <div class="field"><label>Remarks</label><textarea>Handles financial matters and bank operations.</textarea><div style="text-align:right;color:#64748b;font-size:12px">46 / 250</div></div>
+      <div class="field">
+        <label>Remarks</label>
+        <textarea>Handles financial matters and bank operations.</textarea>
+        <div style="text-align:right;color:#64748b;font-size:12px">46 / 250</div>
+      </div>
     </aside>
   </main>
 
