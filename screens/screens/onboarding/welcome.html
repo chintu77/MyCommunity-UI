@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Society Setup Wizard | MyCommunity</title>
+
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/components.css">
+    <link rel="stylesheet" href="../../assets/css/layout.css">
+
+    <style>
+
+        body{
+            margin:0;
+            background:#F3F4F6;
+            font-family:Inter,Arial,sans-serif;
+            color:#111827;
+        }
+
+        .page{
+
+            min-height:100vh;
+            display:flex;
+            flex-direction:column;
+
+        }
+
+        /*================ HEADER ================*/
+
+        header{
+
+            height:72px;
+            background:#ffffff;
+            border-bottom:1px solid #E5E7EB;
+
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+
+            padding:0 48px;
+
+        }
+
+        .logo{
+
+            display:flex;
+            align-items:center;
+            gap:14px;
+
+        }
+
+        .logo-icon{
+
+            width:42px;
+            height:42px;
+
+            border-radius:10px;
+
+            background:#2563EB;
+
+            display:flex;
+            align-items:center;
+            justify-content:center;
+
+            color:#ffffff;
+
+            font-weight:800;
+
+        }
+
+        .logo-title{
+
+            font-size:22px;
+            font-weight:800;
+
+        }
+
+        .profile{
+
+            display:flex;
+            align-items:center;
+            gap:14px;
+
+        }
+
+        .avatar{
+
+            width:42px;
+            height:42px;
+
+            border-radius:50%;
+
+            background:#2563EB;
+            color:white;
+
+            display:flex;
+            align-items:center;
+            justify-content:center;
+
+            font-weight:700;
+
+        }
+
+        /*================ BODY ================*/
+
+        .content{
+
+            flex:1;
+
+            display:flex;
+            justify-content:center;
+            align-items:center;
+
+            padding:60px;
+
+        }
+
+        .wizard-card{
+
+            width:900px;
+
+            background:white;
+
+            border:1px solid #E5E7EB;
+
+            border-radius:12px;
+
+            box-shadow:0 4px 12px rgba(0,0,0,.05);
+
+            padding:56px;
+
+        }
+
+        .badge{
+
+            display:inline-flex;
+
+            padding:8px 18px;
+
+            border-radius:999px;
+
+            background:#EFF6FF;
+
+            color:#2563EB;
+
+            font-size:13px;
+
+            font-weight:700;
+
+            margin-bottom:28px;
+
+        }
+
+        h1{
+
+            margin:0;
+
+            font-size:42px;
+
+            font-weight:800;
+
+            letter-spacing:-1px;
+
+        }
+
+        .subtitle{
+
+            margin-top:18px;
+
+            color:#6B7280;
+
+            font-size:18px;
+
+            line-height:1.7;
+
+        }
+
+        .feature-grid{
+
+            margin-top:48px;
+
+            display:grid;
+
+            grid-template-columns:repeat(2,1fr);
+
+            gap:18px;
+
+        }
+
+        .feature{
+
+            border:1px solid #E5E7EB;
+
+            border-radius:10px;
+
+            padding:22px;
+
+            background:white;
+
+        }
+
+        .feature h3{
+
+            margin:14px 0 8px;
+
+            font-size:16px;
+
+        }
+
+        .feature p{
+
+            margin:0;
+
+            font-size:14px;
+
+            line-height:1.6;
+
+            color:#6B7280;
+
+        }
+
+        .footer{
+
+            margin-top:48px;
+
+            display:flex;
+
+            justify-content:space-between;
+
+            align-items:center;
+
+        }
+
+        .step{
+
+            color:#6B7280;
+
+            font-size:14px;
+
+        }
+
+        .btn{
+
+            background:#2563EB;
+
+            color:white;
+
+            border:none;
+
+            height:48px;
+
+            padding:0 28px;
+
+            border-radius:8px;
+
+            font-size:15px;
+
+            font-weight:700;
+
+            cursor:pointer;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="page">
+
+<header>
+
+<div class="logo">
+
+<div class="logo-icon">MC</div>
+
+<div class="logo-title">
+
+MyCommunity
+
+</div>
+
+</div>
+
+<div class="profile">
+
+<div>
+
+<b>Rahul Shah</b><br>
+
+<span style="font-size:13px;color:#6B7280">Society Owner</span>
+
+</div>
+
+<div class="avatar">
+
+RS
+
+</div>
+
+</div>
+
+</header>
+
+<div class="content">
+
+<div class="wizard-card">
+
+<div class="badge">
+
+Society Setup Wizard
+
+</div>
+
+<h1>
+
+Welcome to MyCommunity
+
+</h1>
+
+<div class="subtitle">
+
+Let's configure your society in a few guided steps. This setup usually takes less than 10 minutes and can be completed later if needed.
+
+</div>
+
+<div class="feature-grid">
+
+<div class="feature">
+
+🏢
+
+<h3>Society Information</h3>
+
+<p>Register your society details and basic information.</p>
+
+</div>
+
+<div class="feature">
+
+🏘️
+
+<h3>Property Structure</h3>
+
+<p>Create towers, wings and property hierarchy.</p>
+
+</div>
+
+<div class="feature">
+
+🚪
+
+<h3>Unit Configuration</h3>
+
+<p>Define flats, villas, offices and unit numbering.</p>
+
+</div>
+
+<div class="feature">
+
+💳
+
+<h3>Financial Setup</h3>
+
+<p>Configure maintenance billing and payment settings.</p>
+
+</div>
+
+</div>
+
+<div class="footer">
+
+<div class="step">
+
+Step 0 of 5
+
+</div>
+
+<button class="btn">
+
+Start Setup →
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+
+</html>
