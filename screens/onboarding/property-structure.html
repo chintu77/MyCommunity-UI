@@ -19,10 +19,6 @@
     .user{display:flex;align-items:center;gap:16px}
     .avatar{width:34px;height:34px;border-radius:50%;background:#dbeafe;display:grid;place-items:center;font-weight:700;color:#1d4ed8}
 
-    .content{padding:28px 52px 24px}
-    h1{font-size:26px;letter-spacing:-.5px;margin-bottom:6px}
-    .subtitle{color:#475569;font-size:13px;margin-bottom:26px}
-
     .stepper{display:flex;align-items:center;gap:14px;margin:28px 36px 24px}
     .step{display:flex;align-items:center;gap:9px;color:#475569;font-size:13px;white-space:nowrap}
     .step.done{color:#475569}
@@ -32,6 +28,10 @@
     .active .circle{background:#2563eb;color:#fff;border-color:#2563eb}
     .line{height:1px;background:#cbd5e1;flex:1}
 
+    .content{padding:28px 52px 24px}
+    h1{font-size:26px;letter-spacing:-.5px;margin-bottom:6px}
+    .subtitle{color:#475569;font-size:13px;margin-bottom:26px}
+
     .layout{display:grid;grid-template-columns:1fr 330px;gap:42px}
     .card{background:#fff;border:1px solid #e5e7eb;border-radius:8px;box-shadow:0 1px 4px rgba(15,23,42,.04);margin-bottom:14px}
     .section{padding:18px 24px}
@@ -39,7 +39,7 @@
     .section-title{font-size:17px;font-weight:800;margin-bottom:8px}
     .section-subtitle{font-size:13px;color:#475569}
 
-    .btn{height:38px;border-radius:6px;border:1px solid #2563eb;background:#fff;color:#2563eb;padding:0 18px;font-weight:700;cursor:pointer}
+    .btn{height:38px;border-radius:6px;border:1px solid #2563eb;background:#fff;color:#2563eb;padding:0 18px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
     .btn-primary{background:#2563eb;color:#fff;border-color:#2563eb}
     .btn-light{border-color:#cbd5e1;color:#334155}
     .btn-danger{border-color:#ef4444;color:#ef4444}
@@ -48,8 +48,18 @@
     th{background:#f8fafc;text-align:left;padding:11px 12px;border:1px solid #e5e7eb;font-weight:700;color:#334155}
     td{padding:12px;border:1px solid #e5e7eb;color:#334155}
     .badge{display:inline-flex;padding:4px 10px;border-radius:6px;background:#dcfce7;color:#15803d;font-weight:700}
+    .badge-pending{background:#fef3c7;color:#92400e}
     .actions{color:#2563eb;font-size:16px;display:flex;gap:18px}
     .delete{color:#ef4444}
+
+    .inline-form{display:none;background:#f8fafc;border:1px solid #dbeafe;border-radius:8px;padding:18px;margin-bottom:18px}
+    .inline-form.open{display:block}
+    .form-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .field label{display:block;font-size:12px;font-weight:700;margin-bottom:7px;color:#0f172a}
+    .input,.select{height:38px;border:1px solid #cbd5e1;border-radius:6px;background:#fff;padding:0 10px;font-size:13px;width:100%;color:#334155}
+    .input[readonly]{background:#f1f5f9;color:#475569}
+    .form-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:16px}
+    .helper{font-size:12px;color:#64748b;margin-top:6px}
 
     .summary{padding:24px}
     .summary h2{font-size:18px;margin-bottom:26px}
@@ -60,13 +70,6 @@
     .summary-value{font-size:24px;font-weight:800}
     .muted-value{font-size:18px;font-weight:700;color:#94a3b8}
 
-    .inline-form{display:none;background:#f8fafc;border:1px solid #dbeafe;border-radius:8px;padding:18px;margin-bottom:18px}
-    .inline-form.open{display:block}
-    .form-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-    .field label{display:block;font-size:12px;font-weight:700;margin-bottom:7px}
-    .input,.select{height:38px;border:1px solid #cbd5e1;border-radius:6px;background:#fff;padding:0 10px;font-size:13px;width:100%}
-    .form-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:16px}
-
     .bottom{position:fixed;left:0;right:0;bottom:0;height:78px;background:#fff;border-top:1px solid #e5e7eb;display:flex;align-items:center;justify-content:space-between;padding:0 42px;z-index:20}
     .bottom-center{text-align:center;font-size:13px;color:#475569}
     .bar{width:360px;height:6px;background:#e5e7eb;border-radius:99px;margin-top:8px}
@@ -74,15 +77,12 @@
 
     .modal-backdrop{display:none;position:fixed;inset:0;background:rgba(15,23,42,.45);z-index:50;align-items:center;justify-content:center}
     .modal-backdrop.open{display:flex}
-    .modal{width:860px;background:#fff;border-radius:12px;box-shadow:0 24px 80px rgba(15,23,42,.25);overflow:hidden}
+    .modal{width:980px;background:#fff;border-radius:12px;box-shadow:0 24px 80px rgba(15,23,42,.25);overflow:hidden}
     .modal-head{height:64px;border-bottom:1px solid #e5e7eb;display:flex;align-items:center;justify-content:space-between;padding:0 24px}
     .modal-title{font-size:18px;font-weight:800}
     .modal-body{padding:24px}
-    .floor-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-    .preview{margin-top:22px;border:1px solid #e5e7eb;border-radius:8px;background:#f8fafc;padding:16px}
-    .preview-title{font-weight:800;margin-bottom:12px}
-    .floor-preview{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-    .floor-chip{background:#fff;border:1px solid #e5e7eb;border-radius:6px;padding:10px;text-align:center;font-size:12px}
+    .floor-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .floor-table{margin-top:22px}
     .modal-footer{height:68px;border-top:1px solid #e5e7eb;display:flex;align-items:center;justify-content:flex-end;gap:12px;padding:0 24px}
   </style>
 </head>
@@ -114,7 +114,7 @@
 
   <main class="content">
     <h1>Property Structure</h1>
-    <div class="subtitle">Configure the physical structure of your society before adding units.</div>
+    <div class="subtitle">Configure stages, structures, floors and unit generation rules for your society.</div>
 
     <div class="layout">
       <section>
@@ -123,7 +123,7 @@
             <div class="section-head">
               <div>
                 <div class="section-title">1. Development Stages</div>
-                <div class="section-subtitle">Create one or more development phases.</div>
+                <div class="section-subtitle">Create construction or possession stages of your society.</div>
               </div>
               <button class="btn" onclick="toggleForm('stageForm')">＋ Add Stage</button>
             </div>
@@ -135,12 +135,38 @@
                   <input class="input" value="Phase 2">
                 </div>
                 <div class="field">
-                  <label>Description *</label>
-                  <input class="input" value="Commercial Wing">
+                  <label>Stage Type *</label>
+                  <select class="select">
+                    <option>Residential</option>
+                    <option>Commercial</option>
+                    <option>Mixed Use</option>
+                  </select>
                 </div>
                 <div class="field">
-                  <label>Status</label>
+                  <label>Possession Status *</label>
+                  <select class="select">
+                    <option>Completed</option>
+                    <option>Pending</option>
+                    <option>Under Construction</option>
+                    <option>Partially Possessed</option>
+                    <option>Planned</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label>Status *</label>
                   <select class="select"><option>Active</option><option>Inactive</option></select>
+                </div>
+                <div class="field">
+                  <label>Start Date</label>
+                  <input class="input" type="date">
+                </div>
+                <div class="field">
+                  <label>Completion Date</label>
+                  <input class="input" type="date">
+                </div>
+                <div class="field" style="grid-column:span 2">
+                  <label>Remarks</label>
+                  <input class="input" value="Second residential phase">
                 </div>
               </div>
               <div class="form-actions">
@@ -151,13 +177,40 @@
 
             <table>
               <thead>
-                <tr><th>Stage Name</th><th>Description</th><th>Status</th><th>Actions</th></tr>
+                <tr>
+                  <th>Stage Name</th>
+                  <th>Stage Type</th>
+                  <th>Possession Status</th>
+                  <th>Start Date</th>
+                  <th>Completion Date</th>
+                  <th>Structures</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
               </thead>
               <tbody>
-                <tr><td>Phase 1</td><td>Residential Towers</td><td><span class="badge">Active</span></td><td><div class="actions">✎ <span class="delete">🗑</span></div></td></tr>
+                <tr>
+                  <td>Phase 1</td>
+                  <td>Residential</td>
+                  <td>Completed</td>
+                  <td>01 Jan 2021</td>
+                  <td>30 Jun 2023</td>
+                  <td>3</td>
+                  <td><span class="badge">Active</span></td>
+                  <td><div class="actions">✎ <span class="delete">🗑</span></div></td>
+                </tr>
+                <tr>
+                  <td>Phase 2</td>
+                  <td>Residential</td>
+                  <td>Pending</td>
+                  <td>01 Apr 2024</td>
+                  <td>31 Dec 2026</td>
+                  <td>2</td>
+                  <td><span class="badge">Active</span></td>
+                  <td><div class="actions">✎ <span class="delete">🗑</span></div></td>
+                </tr>
               </tbody>
             </table>
-            <div style="font-size:12px;color:#64748b;margin-top:12px">Showing 1 to 1 of 1 entries</div>
           </div>
         </div>
 
@@ -166,7 +219,7 @@
             <div class="section-head">
               <div>
                 <div class="section-title">2. Structures</div>
-                <div class="section-subtitle">Configure Towers, Wings or Blocks.</div>
+                <div class="section-subtitle">Create Towers, Blocks, Wings, Buildings or Villas under a stage.</div>
               </div>
               <button class="btn" onclick="toggleForm('structureForm')">＋ Add Structure</button>
             </div>
@@ -174,27 +227,45 @@
             <div id="structureForm" class="inline-form">
               <div class="form-grid">
                 <div class="field">
-                  <label>Structure Name *</label>
-                  <input class="input" value="C Tower">
-                </div>
-                <div class="field">
-                  <label>Type *</label>
-                  <select class="select"><option>Tower</option><option>Wing</option><option>Block</option><option>Club House</option></select>
-                </div>
-                <div class="field">
                   <label>Stage *</label>
-                  <select class="select"><option>Phase 1</option></select>
+                  <select class="select">
+                    <option>Phase 1</option>
+                    <option>Phase 2</option>
+                  </select>
                 </div>
                 <div class="field">
-                  <label>Floors *</label>
-                  <input class="input" value="12">
+                  <label>Structure Type *</label>
+                  <select id="structureType" class="select" onchange="updateDisplayName()">
+                    <option>Tower</option>
+                    <option>Wing</option>
+                    <option>Block</option>
+                    <option>Building</option>
+                    <option>Villa</option>
+                  </select>
                 </div>
                 <div class="field">
-                  <label>Units Per Floor *</label>
-                  <input class="input" value="4">
+                  <label>Structure Number / Alphabet *</label>
+                  <input id="structureCode" class="input" value="1" maxlength="5" oninput="formatStructureCode();updateDisplayName()">
+                  <div class="helper">Only numbers or capital alphabets allowed.</div>
                 </div>
                 <div class="field">
-                  <label>Status</label>
+                  <label>Display Name</label>
+                  <input id="displayName" class="input" value="Tower-1" readonly>
+                </div>
+                <div class="field">
+                  <label>Total Floors *</label>
+                  <input id="floors" class="input" value="12" oninput="updateTotalUnits()">
+                </div>
+                <div class="field">
+                  <label>Default Units / Floor *</label>
+                  <input id="unitsPerFloor" class="input" value="4" oninput="updateTotalUnits()">
+                </div>
+                <div class="field">
+                  <label>Total Units</label>
+                  <input id="totalUnits" class="input" value="48" readonly>
+                </div>
+                <div class="field">
+                  <label>Status *</label>
                   <select class="select"><option>Active</option><option>Inactive</option></select>
                 </div>
               </div>
@@ -206,15 +277,23 @@
 
             <table>
               <thead>
-                <tr><th>Structure Name</th><th>Type</th><th>Stage</th><th>Floors</th><th>Status</th><th>Actions</th></tr>
+                <tr>
+                  <th>Structure</th>
+                  <th>Stage</th>
+                  <th>Floors</th>
+                  <th>Units/Floor</th>
+                  <th>Total Units</th>
+                  <th>Floor Config</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
               </thead>
               <tbody>
-                <tr><td>A Tower</td><td>Tower</td><td>Phase 1</td><td>12</td><td><span class="badge">Active</span></td><td><div class="actions">✎ <span class="delete">🗑</span></div></td></tr>
-                <tr><td>B Tower</td><td>Tower</td><td>Phase 1</td><td>10</td><td><span class="badge">Active</span></td><td><div class="actions">✎ <span class="delete">🗑</span></div></td></tr>
-                <tr><td>Club House</td><td>Block</td><td>Phase 1</td><td>2</td><td><span class="badge">Active</span></td><td><div class="actions">✎ <span class="delete">🗑</span></div></td></tr>
+                <tr><td>Tower-1</td><td>Phase 1</td><td>12</td><td>4</td><td>48</td><td><span class="badge">Configured</span></td><td><span class="badge">Active</span></td><td><div class="actions">✎ <span class="delete">🗑</span></div></td></tr>
+                <tr><td>Tower-2</td><td>Phase 1</td><td>10</td><td>6</td><td>60</td><td><span class="badge-pending badge">Pending</span></td><td><span class="badge">Active</span></td><td><div class="actions">✎ <span class="delete">🗑</span></div></td></tr>
+                <tr><td>Wing-A</td><td>Phase 2</td><td>8</td><td>4</td><td>32</td><td><span class="badge">Configured</span></td><td><span class="badge">Active</span></td><td><div class="actions">✎ <span class="delete">🗑</span></div></td></tr>
               </tbody>
             </table>
-            <div style="font-size:12px;color:#64748b;margin-top:12px">Showing 1 to 3 of 3 entries</div>
           </div>
         </div>
 
@@ -223,72 +302,48 @@
             <div class="section-head">
               <div>
                 <div class="section-title">3. Floor Configuration</div>
-                <div class="section-subtitle">Configure floors for each structure.</div>
+                <div class="section-subtitle">Configure floor names, special floors and unit count per floor.</div>
               </div>
               <button class="btn" onclick="openModal()">⚙ Configure Floors</button>
             </div>
 
             <table>
               <thead>
-                <tr><th>Structure</th><th>Total Floors</th><th>Numbering Format</th><th>Actions</th></tr>
+                <tr>
+                  <th>Structure</th>
+                  <th>Ground Floor Name</th>
+                  <th>Basement Levels</th>
+                  <th>Default Units/Floor</th>
+                  <th>Total Units</th>
+                  <th>Unit Format</th>
+                  <th>Status</th>
+                </tr>
               </thead>
               <tbody>
-                <tr><td>A Tower</td><td>12</td><td>Ground + 11</td><td><div class="actions">⚙</div></td></tr>
-                <tr><td>B Tower</td><td>10</td><td>Ground + 9</td><td><div class="actions">⚙</div></td></tr>
-                <tr><td>Club House</td><td>2</td><td>Ground + 1</td><td><div class="actions">⚙</div></td></tr>
+                <tr><td>Tower-1</td><td>Ground</td><td>1</td><td>4</td><td>48</td><td>101-104</td><td><span class="badge">Configured</span></td></tr>
+                <tr><td>Tower-2</td><td>Stilt</td><td>2</td><td>6</td><td>60</td><td>101-106</td><td><span class="badge-pending badge">Pending</span></td></tr>
+                <tr><td>Wing-A</td><td>Ground</td><td>0</td><td>4</td><td>32</td><td>A-101</td><td><span class="badge">Configured</span></td></tr>
               </tbody>
             </table>
-            <div style="font-size:12px;color:#64748b;margin-top:12px">Showing 1 to 3 of 3 entries</div>
           </div>
         </div>
       </section>
 
       <aside class="card summary">
         <h2>Property Summary</h2>
-
-        <div class="summary-item">
-          <div class="summary-icon">▣</div>
-          <div>
-            <div class="summary-label">Development Stages</div>
-            <div class="summary-value">1</div>
-          </div>
-        </div>
-
-        <div class="summary-item">
-          <div class="summary-icon">🏢</div>
-          <div>
-            <div class="summary-label">Structures</div>
-            <div class="summary-value">3</div>
-          </div>
-        </div>
-
-        <div class="summary-item">
-          <div class="summary-icon">▤</div>
-          <div>
-            <div class="summary-label">Total Floors</div>
-            <div class="summary-value">24</div>
-          </div>
-        </div>
-
-        <div class="summary-item">
-          <div class="summary-icon">⌂</div>
-          <div>
-            <div class="summary-label">Estimated Units</div>
-            <div class="muted-value">Not Configured</div>
-          </div>
-        </div>
+        <div class="summary-item"><div class="summary-icon">▣</div><div><div class="summary-label">Development Stages</div><div class="summary-value">2</div></div></div>
+        <div class="summary-item"><div class="summary-icon">🏢</div><div><div class="summary-label">Structures</div><div class="summary-value">3</div></div></div>
+        <div class="summary-item"><div class="summary-icon">▤</div><div><div class="summary-label">Total Floors</div><div class="summary-value">30</div></div></div>
+        <div class="summary-item"><div class="summary-icon">⌂</div><div><div class="summary-label">Estimated Units</div><div class="summary-value">140</div></div></div>
       </aside>
     </div>
   </main>
 
   <div class="bottom">
-    <a href="society-information.html" class="btn" style="text-decoration:none;display:flex;align-items:center">← Back</a>
+    <a href="society-information.html" class="btn">← Back</a>
     <button class="btn">▣ Save as Draft</button>
-    <div class="bottom-center">
-      Step 2 of 5<br>40% Complete
-      <div class="bar"><span></span></div>
-    </div>
-    <a href="unit-configuration.html" class="btn btn-primary" style="text-decoration:none;display:flex;align-items:center">Save & Continue →</a>
+    <div class="bottom-center">Step 2 of 5<br>40% Complete<div class="bar"><span></span></div></div>
+    <a href="unit-configuration.html" class="btn btn-primary">Save & Continue →</a>
   </div>
 </div>
 
@@ -303,30 +358,63 @@
       <div class="floor-grid">
         <div class="field">
           <label>Structure *</label>
-          <select class="select"><option>A Tower</option><option>B Tower</option><option>Club House</option></select>
+          <select class="select">
+            <option>Tower-1</option>
+            <option>Tower-2</option>
+            <option>Wing-A</option>
+          </select>
         </div>
         <div class="field">
-          <label>Total Floors *</label>
-          <input class="input" value="12">
+          <label>Ground Floor Name *</label>
+          <select class="select">
+            <option>Ground</option>
+            <option>Stilt</option>
+            <option>Lobby</option>
+            <option>Podium</option>
+          </select>
         </div>
         <div class="field">
-          <label>Ground Floor Name</label>
-          <input class="input" value="Ground">
+          <label>Basement Levels</label>
+          <input class="input" value="1">
         </div>
         <div class="field">
-          <label>Numbering Format *</label>
-          <select class="select"><option>Ground + Number</option><option>Floor + Unit</option></select>
+          <label>Default Units / Floor *</label>
+          <input class="input" value="4">
+        </div>
+        <div class="field">
+          <label>Unit Number Format *</label>
+          <select class="select">
+            <option>Floor + Unit Number</option>
+            <option>Structure Prefix + Floor + Unit</option>
+            <option>Custom Format</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Special Floors</label>
+          <input class="input" value="Refuge, Terrace">
         </div>
       </div>
 
-      <div class="preview">
-        <div class="preview-title">Floor Numbering Preview</div>
-        <div class="floor-preview">
-          <div class="floor-chip"><b>Ground</b><br>G-01, G-02, G-03</div>
-          <div class="floor-chip"><b>1st Floor</b><br>101, 102, 103</div>
-          <div class="floor-chip"><b>2nd Floor</b><br>201, 202, 203</div>
-          <div class="floor-chip"><b>3rd Floor</b><br>301, 302, 303</div>
-        </div>
+      <div class="floor-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Floor Name</th>
+              <th>Floor Type</th>
+              <th>Units Count</th>
+              <th>Unit Number Preview</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Basement 1</td><td>Parking</td><td>0</td><td>Not applicable</td></tr>
+            <tr><td>Ground</td><td>Lobby / Amenities</td><td>0</td><td>Not applicable</td></tr>
+            <tr><td>Floor 1</td><td>Residential</td><td>4</td><td>101 - 104</td></tr>
+            <tr><td>Floor 2</td><td>Residential</td><td>4</td><td>201 - 204</td></tr>
+            <tr><td>Floor 3</td><td>Residential</td><td>4</td><td>301 - 304</td></tr>
+            <tr><td>Refuge Floor</td><td>Safety</td><td>0</td><td>Not applicable</td></tr>
+            <tr><td>Terrace</td><td>Common Area</td><td>0</td><td>Not applicable</td></tr>
+          </tbody>
+        </table>
       </div>
     </div>
 
@@ -338,16 +426,25 @@
 </div>
 
 <script>
-  function toggleForm(id){
-    document.getElementById(id).classList.toggle("open");
+  function toggleForm(id){document.getElementById(id).classList.toggle("open")}
+  function openModal(){document.getElementById("floorModal").classList.add("open")}
+  function closeModal(){document.getElementById("floorModal").classList.remove("open")}
+
+  function formatStructureCode(){
+    const el=document.getElementById("structureCode");
+    el.value=el.value.toUpperCase().replace(/[^A-Z0-9]/g,"");
   }
 
-  function openModal(){
-    document.getElementById("floorModal").classList.add("open");
+  function updateDisplayName(){
+    const type=document.getElementById("structureType").value;
+    const code=document.getElementById("structureCode").value;
+    document.getElementById("displayName").value=type+"-"+code;
   }
 
-  function closeModal(){
-    document.getElementById("floorModal").classList.remove("open");
+  function updateTotalUnits(){
+    const floors=parseInt(document.getElementById("floors").value || 0);
+    const units=parseInt(document.getElementById("unitsPerFloor").value || 0);
+    document.getElementById("totalUnits").value=floors*units;
   }
 </script>
 </body>
