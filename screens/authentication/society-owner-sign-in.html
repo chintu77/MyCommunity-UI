@@ -1,1 +1,270 @@
-<!DOCTYPE html><html><head><meta charset='UTF-8'><title>Society Owner Sign In</title><link rel='stylesheet' href='../../assets/css/style.css'><link rel='stylesheet' href='../../assets/css/components.css'></head><body><h1>Society Owner Sign In</h1><p>Starter screen.</p><p><a href='../../index.html'>Back</a></p><script src='../../assets/js/app.js'></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Society Owner Sign In | MyCommunity</title>
+
+  <link rel="stylesheet" href="../../assets/css/style.css" />
+  <link rel="stylesheet" href="../../assets/css/components.css" />
+
+  <style>
+    .auth-page {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+    }
+
+    .auth-brand {
+      background: #ffffff;
+      border-right: 1px solid var(--border);
+      padding: 56px 72px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 22px;
+      font-weight: 800;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: var(--primary);
+      color: white;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+    }
+
+    .auth-hero {
+      max-width: 620px;
+    }
+
+    .auth-hero h1 {
+      font-size: 52px;
+      line-height: 1.05;
+      letter-spacing: -1.8px;
+      margin: 20px 0;
+    }
+
+    .auth-hero p {
+      font-size: 18px;
+      line-height: 1.7;
+      color: var(--muted);
+      max-width: 540px;
+    }
+
+    .feature-grid {
+      margin-top: 36px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .feature-card {
+      padding: 18px;
+    }
+
+    .feature-card h3 {
+      font-size: 15px;
+      margin: 10px 0 6px;
+    }
+
+    .feature-card p {
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--muted);
+    }
+
+    .auth-panel {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 48px;
+    }
+
+    .login-card {
+      width: 100%;
+      max-width: 460px;
+      padding: 36px;
+    }
+
+    .login-card h2 {
+      font-size: 30px;
+      margin-bottom: 8px;
+      letter-spacing: -0.8px;
+    }
+
+    .login-card .subtitle {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+
+    .auth-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 6px 0 22px;
+      font-size: 14px;
+    }
+
+    .remember {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 24px 0;
+      color: var(--soft);
+      font-size: 13px;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .security-note {
+      margin-top: 22px;
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+      display: flex;
+      gap: 10px;
+    }
+
+    @media (max-width: 980px) {
+      .auth-page {
+        grid-template-columns: 1fr;
+      }
+
+      .auth-brand {
+        display: none;
+      }
+
+      .auth-panel {
+        min-height: 100vh;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="auth-page">
+    <section class="auth-brand">
+      <div class="brand-logo">
+        <div class="brand-mark">MC</div>
+        <span>MyCommunity</span>
+      </div>
+
+      <div class="auth-hero">
+        <span class="badge badge-success">Society Owner Admin Portal</span>
+
+        <h1>Manage your society from one secure workspace.</h1>
+
+        <p>
+          Set up your community, manage residents, billing, visitors, staff,
+          complaints, notices and society operations from a modern enterprise portal.
+        </p>
+
+        <div class="feature-grid">
+          <div class="card feature-card">
+            <div>🏠</div>
+            <h3>Society Setup</h3>
+            <p>Create towers, units, owners and property structure with guided onboarding.</p>
+          </div>
+
+          <div class="card feature-card">
+            <div>💳</div>
+            <h3>Billing & Finance</h3>
+            <p>Configure maintenance billing, payments, charge plans and financial reports.</p>
+          </div>
+
+          <div class="card feature-card">
+            <div>🛡️</div>
+            <h3>Visitor Control</h3>
+            <p>Track visitors, staff, approvals and security operations in one place.</p>
+          </div>
+
+          <div class="card feature-card">
+            <div>📢</div>
+            <h3>Resident Communication</h3>
+            <p>Send notices, invite residents and manage daily community updates.</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="text-soft">© 2026 MyCommunity. Enterprise society management platform.</p>
+    </section>
+
+    <section class="auth-panel">
+      <div class="card login-card">
+        <h2>Sign in</h2>
+        <p class="subtitle">
+          Access your Society Owner Admin Portal to continue setup and manage your community.
+        </p>
+
+        <form>
+          <div class="form-group">
+            <label class="form-label">Email address</label>
+            <input class="form-input" type="email" placeholder="owner@mycommunity.com" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Password</label>
+            <input class="form-input" type="password" placeholder="Enter your password" />
+          </div>
+
+          <div class="auth-row">
+            <label class="remember">
+              <input type="checkbox" />
+              Remember me
+            </label>
+            <a href="#">Forgot password?</a>
+          </div>
+
+          <button type="button" class="btn btn-primary" style="width:100%;">
+            Sign in to Admin Portal
+          </button>
+
+          <div class="divider">or</div>
+
+          <button type="button" class="btn btn-secondary" style="width:100%;">
+            Continue with Google
+          </button>
+        </form>
+
+        <div class="security-note">
+          <span>🔒</span>
+          <p>
+            Protected workspace for verified society owners and authorized administrators.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="../../assets/js/app.js"></script>
+</body>
+</html>
