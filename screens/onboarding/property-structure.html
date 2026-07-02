@@ -4,448 +4,131 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Property Structure | MyCommunity</title>
-
   <style>
     @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
-
     *{box-sizing:border-box;margin:0;padding:0}
     body{font-family:Inter,Arial,sans-serif;background:#f8fafc;color:#0f172a;font-size:14px}
-    .page{min-height:100vh;padding-bottom:78px}
     .topbar{height:64px;background:#fff;border-bottom:1px solid #e5e7eb;display:flex;align-items:center;justify-content:space-between;padding:0 28px}
-    .brand{display:flex;align-items:center;gap:12px}
-    .brand-icon{width:42px;height:42px;border-radius:10px;background:#2563eb;color:#fff;display:grid;place-items:center;font-weight:800}
-    .brand-title{font-size:22px;font-weight:800;letter-spacing:-.4px}
+    .brand{display:flex;align-items:center;gap:12px}.brand-icon{width:42px;height:42px;border-radius:10px;background:#2563eb;color:#fff;display:grid;place-items:center;font-weight:800}.brand-title{font-size:22px;font-weight:800}
     .wizard-title{position:absolute;left:50%;transform:translateX(-50%);font-weight:700;font-size:16px}
-    .user{display:flex;align-items:center;gap:16px}
-    .avatar{width:34px;height:34px;border-radius:50%;background:#dbeafe;display:grid;place-items:center;font-weight:700;color:#1d4ed8}
-
-    .stepper{display:flex;align-items:center;gap:14px;margin:28px 36px 24px}
-    .step{display:flex;align-items:center;gap:9px;color:#475569;font-size:13px;white-space:nowrap}
-    .step.done{color:#475569}
-    .step.active{color:#2563eb;font-weight:700}
-    .circle{width:34px;height:34px;border-radius:50%;border:1px solid #cbd5e1;display:grid;place-items:center;background:#fff;font-weight:700}
-    .done .circle{background:#16a34a;color:#fff;border-color:#16a34a}
-    .active .circle{background:#2563eb;color:#fff;border-color:#2563eb}
-    .line{height:1px;background:#cbd5e1;flex:1}
-
-    .content{padding:28px 52px 24px}
-    h1{font-size:26px;letter-spacing:-.5px;margin-bottom:6px}
-    .subtitle{color:#475569;font-size:13px;margin-bottom:26px}
-
-    .layout{display:grid;grid-template-columns:1fr 330px;gap:42px}
-    .card{background:#fff;border:1px solid #e5e7eb;border-radius:8px;box-shadow:0 1px 4px rgba(15,23,42,.04);margin-bottom:14px}
-    .section{padding:18px 24px}
-    .section-head{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:18px}
-    .section-title{font-size:17px;font-weight:800;margin-bottom:8px}
-    .section-subtitle{font-size:13px;color:#475569}
-
-    .btn{height:38px;border-radius:6px;border:1px solid #2563eb;background:#fff;color:#2563eb;padding:0 18px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
-    .btn-primary{background:#2563eb;color:#fff;border-color:#2563eb}
-    .btn-light{border-color:#cbd5e1;color:#334155}
-    .btn-danger{border-color:#ef4444;color:#ef4444}
-
-    table{width:100%;border-collapse:collapse;font-size:13px}
-    th{background:#f8fafc;text-align:left;padding:11px 12px;border:1px solid #e5e7eb;font-weight:700;color:#334155}
-    td{padding:12px;border:1px solid #e5e7eb;color:#334155}
-    .badge{display:inline-flex;padding:4px 10px;border-radius:6px;background:#dcfce7;color:#15803d;font-weight:700}
-    .badge-pending{background:#fef3c7;color:#92400e}
-    .actions{color:#2563eb;font-size:16px;display:flex;gap:18px}
-    .delete{color:#ef4444}
-
-    .inline-form{display:none;background:#f8fafc;border:1px solid #dbeafe;border-radius:8px;padding:18px;margin-bottom:18px}
-    .inline-form.open{display:block}
-    .form-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-    .field label{display:block;font-size:12px;font-weight:700;margin-bottom:7px;color:#0f172a}
-    .input,.select{height:38px;border:1px solid #cbd5e1;border-radius:6px;background:#fff;padding:0 10px;font-size:13px;width:100%;color:#334155}
-    .input[readonly]{background:#f1f5f9;color:#475569}
-    .form-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:16px}
-    .helper{font-size:12px;color:#64748b;margin-top:6px}
-
-    .summary{padding:24px}
-    .summary h2{font-size:18px;margin-bottom:26px}
-    .summary-item{display:flex;align-items:center;gap:18px;padding:22px 0;border-bottom:1px solid #e5e7eb}
-    .summary-item:last-child{border-bottom:none}
-    .summary-icon{width:48px;height:48px;border-radius:6px;background:#eff6ff;color:#2563eb;display:grid;place-items:center;font-size:24px}
-    .summary-label{font-size:13px;color:#475569;margin-bottom:6px}
-    .summary-value{font-size:24px;font-weight:800}
-    .muted-value{font-size:18px;font-weight:700;color:#94a3b8}
-
-    .bottom{position:fixed;left:0;right:0;bottom:0;height:78px;background:#fff;border-top:1px solid #e5e7eb;display:flex;align-items:center;justify-content:space-between;padding:0 42px;z-index:20}
-    .bottom-center{text-align:center;font-size:13px;color:#475569}
-    .bar{width:360px;height:6px;background:#e5e7eb;border-radius:99px;margin-top:8px}
-    .bar span{display:block;width:40%;height:100%;background:#2563eb;border-radius:99px}
-
-    .modal-backdrop{display:none;position:fixed;inset:0;background:rgba(15,23,42,.45);z-index:50;align-items:center;justify-content:center}
-    .modal-backdrop.open{display:flex}
-    .modal{width:980px;background:#fff;border-radius:12px;box-shadow:0 24px 80px rgba(15,23,42,.25);overflow:hidden}
-    .modal-head{height:64px;border-bottom:1px solid #e5e7eb;display:flex;align-items:center;justify-content:space-between;padding:0 24px}
-    .modal-title{font-size:18px;font-weight:800}
-    .modal-body{padding:24px}
-    .floor-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-    .floor-table{margin-top:22px}
-    .modal-footer{height:68px;border-top:1px solid #e5e7eb;display:flex;align-items:center;justify-content:flex-end;gap:12px;padding:0 24px}
+    .user{display:flex;align-items:center;gap:16px}.avatar{width:34px;height:34px;border-radius:50%;background:#dbeafe;display:grid;place-items:center;font-weight:700;color:#1d4ed8}
+    .stepper{display:flex;align-items:center;gap:14px;margin:28px 36px 24px}.step{display:flex;align-items:center;gap:9px;color:#475569;font-size:13px}.step.active{color:#2563eb;font-weight:700}.circle{width:34px;height:34px;border-radius:50%;border:1px solid #cbd5e1;display:grid;place-items:center;background:#fff;font-weight:700}.done .circle{background:#16a34a;color:#fff;border-color:#16a34a}.active .circle{background:#2563eb;color:#fff;border-color:#2563eb}.line{height:1px;background:#cbd5e1;flex:1}
+    .content{padding:28px 52px 100px}h1{font-size:26px;margin-bottom:6px}.subtitle{color:#475569;font-size:13px;margin-bottom:26px}
+    .layout{display:grid;grid-template-columns:1fr 330px;gap:42px}.card{background:#fff;border:1px solid #e5e7eb;border-radius:8px;margin-bottom:14px}.section{padding:18px 24px}.section-head{display:flex;justify-content:space-between;margin-bottom:18px}.section-title{font-size:17px;font-weight:800;margin-bottom:8px}.section-subtitle{font-size:13px;color:#475569}
+    .btn{height:38px;border-radius:6px;border:1px solid #2563eb;background:#fff;color:#2563eb;padding:0 18px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center}.btn-primary{background:#2563eb;color:#fff}.btn-light{border-color:#cbd5e1;color:#334155}
+    table{width:100%;border-collapse:collapse;font-size:13px}th{background:#f8fafc;text-align:left;padding:11px 12px;border:1px solid #e5e7eb}td{padding:12px;border:1px solid #e5e7eb;color:#334155}.badge{display:inline-flex;padding:4px 10px;border-radius:6px;background:#dcfce7;color:#15803d;font-weight:700}.actions{color:#2563eb;font-size:16px;display:flex;gap:18px}.delete{color:#ef4444}
+    .inline-form{display:none;background:#f8fafc;border:1px solid #dbeafe;border-radius:8px;padding:18px;margin-bottom:18px}.inline-form.open{display:block}.form-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.field label{display:block;font-size:12px;font-weight:700;margin-bottom:7px}.input,.select{height:38px;border:1px solid #cbd5e1;border-radius:6px;background:#fff;padding:0 10px;font-size:13px;width:100%}.input[readonly]{background:#f1f5f9}.form-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:16px}
+    .summary{padding:24px}.summary h2{font-size:18px;margin-bottom:22px}.summary-item{display:flex;justify-content:space-between;padding:16px 0;border-bottom:1px solid #e5e7eb}.summary-value{font-weight:800;font-size:20px}
+    .bottom{position:fixed;left:0;right:0;bottom:0;height:78px;background:#fff;border-top:1px solid #e5e7eb;display:flex;align-items:center;justify-content:space-between;padding:0 42px}.bar{width:360px;height:6px;background:#e5e7eb;border-radius:99px;margin-top:8px}.bar span{display:block;width:40%;height:100%;background:#2563eb;border-radius:99px}.bottom-center{text-align:center;font-size:13px;color:#475569}
   </style>
 </head>
-
 <body>
-<div class="page">
-  <header class="topbar">
-    <div class="brand">
-      <div class="brand-icon">MC</div>
-      <span class="brand-title">MyCommunity</span>
-    </div>
-    <div class="wizard-title">Society Setup Wizard</div>
-    <div class="user">
-      <div class="avatar">RS</div>
-      <b>Rahul Shah</b>
-      <span>⌄</span>
-      <span style="color:#cbd5e1">|</span>
-      <span>↪ Logout</span>
-    </div>
-  </header>
+<header class="topbar">
+  <div class="brand"><div class="brand-icon">MC</div><span class="brand-title">MyCommunity</span></div>
+  <div class="wizard-title">Society Setup Wizard</div>
+  <div class="user"><div class="avatar">RS</div><b>Rahul Shah</b><span>⌄</span><span style="color:#cbd5e1">|</span><span>↪ Logout</span></div>
+</header>
 
-  <div class="stepper">
-    <div class="step done"><div class="circle">✓</div>Society Information</div><div class="line"></div>
-    <div class="step active"><div class="circle">2</div>Property Structure</div><div class="line"></div>
-    <div class="step"><div class="circle">3</div>Unit Configuration</div><div class="line"></div>
-    <div class="step"><div class="circle">4</div>Financial Configuration</div><div class="line"></div>
-    <div class="step"><div class="circle">5</div>Review & Activate</div>
-  </div>
-
-  <main class="content">
-    <h1>Property Structure</h1>
-    <div class="subtitle">Configure stages, structures, floors and unit generation rules for your society.</div>
-
-    <div class="layout">
-      <section>
-        <div class="card">
-          <div class="section">
-            <div class="section-head">
-              <div>
-                <div class="section-title">1. Development Stages</div>
-                <div class="section-subtitle">Create construction or possession stages of your society.</div>
-              </div>
-              <button class="btn" onclick="toggleForm('stageForm')">＋ Add Stage</button>
-            </div>
-
-            <div id="stageForm" class="inline-form">
-              <div class="form-grid">
-                <div class="field">
-                  <label>Stage Name *</label>
-                  <input class="input" value="Phase 2">
-                </div>
-                <div class="field">
-                  <label>Stage Type *</label>
-                  <select class="select">
-                    <option>Residential</option>
-                    <option>Commercial</option>
-                    <option>Mixed Use</option>
-                  </select>
-                </div>
-                <div class="field">
-                  <label>Possession Status *</label>
-                  <select class="select">
-                    <option>Completed</option>
-                    <option>Pending</option>
-                    <option>Under Construction</option>
-                    <option>Partially Possessed</option>
-                    <option>Planned</option>
-                  </select>
-                </div>
-                <div class="field">
-                  <label>Status *</label>
-                  <select class="select"><option>Active</option><option>Inactive</option></select>
-                </div>
-                <div class="field">
-                  <label>Start Date</label>
-                  <input class="input" type="date">
-                </div>
-                <div class="field">
-                  <label>Completion Date</label>
-                  <input class="input" type="date">
-                </div>
-                <div class="field" style="grid-column:span 2">
-                  <label>Remarks</label>
-                  <input class="input" value="Second residential phase">
-                </div>
-              </div>
-              <div class="form-actions">
-                <button class="btn btn-light" onclick="toggleForm('stageForm')">Cancel</button>
-                <button class="btn btn-primary" onclick="toggleForm('stageForm')">Save Stage</button>
-              </div>
-            </div>
-
-            <table>
-              <thead>
-                <tr>
-                  <th>Stage Name</th>
-                  <th>Stage Type</th>
-                  <th>Possession Status</th>
-                  <th>Start Date</th>
-                  <th>Completion Date</th>
-                  <th>Structures</th>
-                  <th>Status</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Phase 1</td>
-                  <td>Residential</td>
-                  <td>Completed</td>
-                  <td>01 Jan 2021</td>
-                  <td>30 Jun 2023</td>
-                  <td>3</td>
-                  <td><span class="badge">Active</span></td>
-                  <td><div class="actions">✎ <span class="delete">🗑</span></div></td>
-                </tr>
-                <tr>
-                  <td>Phase 2</td>
-                  <td>Residential</td>
-                  <td>Pending</td>
-                  <td>01 Apr 2024</td>
-                  <td>31 Dec 2026</td>
-                  <td>2</td>
-                  <td><span class="badge">Active</span></td>
-                  <td><div class="actions">✎ <span class="delete">🗑</span></div></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="section">
-            <div class="section-head">
-              <div>
-                <div class="section-title">2. Structures</div>
-                <div class="section-subtitle">Create Towers, Blocks, Wings, Buildings or Villas under a stage.</div>
-              </div>
-              <button class="btn" onclick="toggleForm('structureForm')">＋ Add Structure</button>
-            </div>
-
-            <div id="structureForm" class="inline-form">
-              <div class="form-grid">
-                <div class="field">
-                  <label>Stage *</label>
-                  <select class="select">
-                    <option>Phase 1</option>
-                    <option>Phase 2</option>
-                  </select>
-                </div>
-                <div class="field">
-                  <label>Structure Type *</label>
-                  <select id="structureType" class="select" onchange="updateDisplayName()">
-                    <option>Tower</option>
-                    <option>Wing</option>
-                    <option>Block</option>
-                    <option>Building</option>
-                    <option>Villa</option>
-                  </select>
-                </div>
-                <div class="field">
-                  <label>Structure Number / Alphabet *</label>
-                  <input id="structureCode" class="input" value="1" maxlength="5" oninput="formatStructureCode();updateDisplayName()">
-                  <div class="helper">Only numbers or capital alphabets allowed.</div>
-                </div>
-                <div class="field">
-                  <label>Display Name</label>
-                  <input id="displayName" class="input" value="Tower-1" readonly>
-                </div>
-                <div class="field">
-                  <label>Total Floors *</label>
-                  <input id="floors" class="input" value="12" oninput="updateTotalUnits()">
-                </div>
-                <div class="field">
-                  <label>Default Units / Floor *</label>
-                  <input id="unitsPerFloor" class="input" value="4" oninput="updateTotalUnits()">
-                </div>
-                <div class="field">
-                  <label>Total Units</label>
-                  <input id="totalUnits" class="input" value="48" readonly>
-                </div>
-                <div class="field">
-                  <label>Status *</label>
-                  <select class="select"><option>Active</option><option>Inactive</option></select>
-                </div>
-              </div>
-              <div class="form-actions">
-                <button class="btn btn-light" onclick="toggleForm('structureForm')">Cancel</button>
-                <button class="btn btn-primary" onclick="toggleForm('structureForm')">Save Structure</button>
-              </div>
-            </div>
-
-            <table>
-              <thead>
-                <tr>
-                  <th>Structure</th>
-                  <th>Stage</th>
-                  <th>Floors</th>
-                  <th>Units/Floor</th>
-                  <th>Total Units</th>
-                  <th>Floor Config</th>
-                  <th>Status</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr><td>Tower-1</td><td>Phase 1</td><td>12</td><td>4</td><td>48</td><td><span class="badge">Configured</span></td><td><span class="badge">Active</span></td><td><div class="actions">✎ <span class="delete">🗑</span></div></td></tr>
-                <tr><td>Tower-2</td><td>Phase 1</td><td>10</td><td>6</td><td>60</td><td><span class="badge-pending badge">Pending</span></td><td><span class="badge">Active</span></td><td><div class="actions">✎ <span class="delete">🗑</span></div></td></tr>
-                <tr><td>Wing-A</td><td>Phase 2</td><td>8</td><td>4</td><td>32</td><td><span class="badge">Configured</span></td><td><span class="badge">Active</span></td><td><div class="actions">✎ <span class="delete">🗑</span></div></td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="section">
-            <div class="section-head">
-              <div>
-                <div class="section-title">3. Floor Configuration</div>
-                <div class="section-subtitle">Configure floor names, special floors and unit count per floor.</div>
-              </div>
-              <button class="btn" onclick="openModal()">⚙ Configure Floors</button>
-            </div>
-
-            <table>
-              <thead>
-                <tr>
-                  <th>Structure</th>
-                  <th>Ground Floor Name</th>
-                  <th>Basement Levels</th>
-                  <th>Default Units/Floor</th>
-                  <th>Total Units</th>
-                  <th>Unit Format</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr><td>Tower-1</td><td>Ground</td><td>1</td><td>4</td><td>48</td><td>101-104</td><td><span class="badge">Configured</span></td></tr>
-                <tr><td>Tower-2</td><td>Stilt</td><td>2</td><td>6</td><td>60</td><td>101-106</td><td><span class="badge-pending badge">Pending</span></td></tr>
-                <tr><td>Wing-A</td><td>Ground</td><td>0</td><td>4</td><td>32</td><td>A-101</td><td><span class="badge">Configured</span></td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      <aside class="card summary">
-        <h2>Property Summary</h2>
-        <div class="summary-item"><div class="summary-icon">▣</div><div><div class="summary-label">Development Stages</div><div class="summary-value">2</div></div></div>
-        <div class="summary-item"><div class="summary-icon">🏢</div><div><div class="summary-label">Structures</div><div class="summary-value">3</div></div></div>
-        <div class="summary-item"><div class="summary-icon">▤</div><div><div class="summary-label">Total Floors</div><div class="summary-value">30</div></div></div>
-        <div class="summary-item"><div class="summary-icon">⌂</div><div><div class="summary-label">Estimated Units</div><div class="summary-value">140</div></div></div>
-      </aside>
-    </div>
-  </main>
-
-  <div class="bottom">
-    <a href="society-information.html" class="btn">← Back</a>
-    <button class="btn">▣ Save as Draft</button>
-    <div class="bottom-center">Step 2 of 5<br>40% Complete<div class="bar"><span></span></div></div>
-    <a href="unit-configuration.html" class="btn btn-primary">Save & Continue →</a>
-  </div>
+<div class="stepper">
+  <div class="step done"><div class="circle">✓</div>Society Information</div><div class="line"></div>
+  <div class="step active"><div class="circle">2</div>Property Structure</div><div class="line"></div>
+  <div class="step"><div class="circle">3</div>Unit Configuration</div><div class="line"></div>
+  <div class="step"><div class="circle">4</div>Financial Configuration</div><div class="line"></div>
+  <div class="step"><div class="circle">5</div>Review & Activate</div>
 </div>
 
-<div id="floorModal" class="modal-backdrop">
-  <div class="modal">
-    <div class="modal-head">
-      <div class="modal-title">Configure Floors</div>
-      <button class="btn btn-light" onclick="closeModal()">×</button>
-    </div>
+<main class="content">
+  <h1>Property Structure</h1>
+  <div class="subtitle">Configure development stages and structures. Unit numbering will be handled during master import.</div>
 
-    <div class="modal-body">
-      <div class="floor-grid">
-        <div class="field">
-          <label>Structure *</label>
-          <select class="select">
-            <option>Tower-1</option>
-            <option>Tower-2</option>
-            <option>Wing-A</option>
-          </select>
-        </div>
-        <div class="field">
-          <label>Ground Floor Name *</label>
-          <select class="select">
-            <option>Ground</option>
-            <option>Stilt</option>
-            <option>Lobby</option>
-            <option>Podium</option>
-          </select>
-        </div>
-        <div class="field">
-          <label>Basement Levels</label>
-          <input class="input" value="1">
-        </div>
-        <div class="field">
-          <label>Default Units / Floor *</label>
-          <input class="input" value="4">
-        </div>
-        <div class="field">
-          <label>Unit Number Format *</label>
-          <select class="select">
-            <option>Floor + Unit Number</option>
-            <option>Structure Prefix + Floor + Unit</option>
-            <option>Custom Format</option>
-          </select>
-        </div>
-        <div class="field">
-          <label>Special Floors</label>
-          <input class="input" value="Refuge, Terrace">
+  <div class="layout">
+    <section>
+      <div class="card">
+        <div class="section">
+          <div class="section-head">
+            <div><div class="section-title">1. Development Stages</div><div class="section-subtitle">Create society development or possession stages.</div></div>
+            <button class="btn" onclick="toggleForm('stageForm')">＋ Add Stage</button>
+          </div>
+
+          <div id="stageForm" class="inline-form">
+            <div class="form-grid">
+              <div class="field"><label>Stage Name *</label><input class="input" value="Phase 2"></div>
+              <div class="field"><label>Stage Type *</label><select class="select"><option>Residential</option><option>Commercial</option><option>Mixed Use</option></select></div>
+              <div class="field"><label>Possession Status *</label><select class="select"><option>Completed</option><option>Under Construction</option><option>Planned</option><option>Partially Possessed</option></select></div>
+              <div class="field"><label>Status *</label><select class="select"><option>Active</option><option>Inactive</option></select></div>
+              <div class="field"><label>Start Date</label><input class="input" type="date"></div>
+              <div class="field"><label>Completion Date</label><input class="input" type="date"></div>
+              <div class="field" style="grid-column:span 2"><label>Description</label><input class="input" value="Residential towers handed over in second phase"></div>
+            </div>
+            <div class="form-actions"><button class="btn btn-light" onclick="toggleForm('stageForm')">Cancel</button><button class="btn btn-primary" onclick="toggleForm('stageForm')">Save Stage</button></div>
+          </div>
+
+          <table>
+            <thead><tr><th>Stage Name</th><th>Stage Type</th><th>Possession Status</th><th>Start Date</th><th>Completion Date</th><th>Description</th><th>Status</th><th>Actions</th></tr></thead>
+            <tbody>
+              <tr><td>Phase 1</td><td>Residential</td><td>Completed</td><td>01-Jan-2021</td><td>30-Jun-2023</td><td>First residential handover</td><td><span class="badge">Active</span></td><td><div class="actions">✎ <span class="delete">🗑</span></div></td></tr>
+              <tr><td>Phase 2</td><td>Residential</td><td>Under Construction</td><td>01-Apr-2024</td><td>31-Dec-2026</td><td>Second residential handover</td><td><span class="badge">Active</span></td><td><div class="actions">✎ <span class="delete">🗑</span></div></td></tr>
+            </tbody>
+          </table>
         </div>
       </div>
 
-      <div class="floor-table">
-        <table>
-          <thead>
-            <tr>
-              <th>Floor Name</th>
-              <th>Floor Type</th>
-              <th>Units Count</th>
-              <th>Unit Number Preview</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>Basement 1</td><td>Parking</td><td>0</td><td>Not applicable</td></tr>
-            <tr><td>Ground</td><td>Lobby / Amenities</td><td>0</td><td>Not applicable</td></tr>
-            <tr><td>Floor 1</td><td>Residential</td><td>4</td><td>101 - 104</td></tr>
-            <tr><td>Floor 2</td><td>Residential</td><td>4</td><td>201 - 204</td></tr>
-            <tr><td>Floor 3</td><td>Residential</td><td>4</td><td>301 - 304</td></tr>
-            <tr><td>Refuge Floor</td><td>Safety</td><td>0</td><td>Not applicable</td></tr>
-            <tr><td>Terrace</td><td>Common Area</td><td>0</td><td>Not applicable</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+      <div class="card">
+        <div class="section">
+          <div class="section-head">
+            <div><div class="section-title">2. Structures</div><div class="section-subtitle">Add towers, blocks or wings. Total units are calculated automatically.</div></div>
+            <button class="btn" onclick="toggleForm('structureForm')">＋ Add Structure</button>
+          </div>
 
-    <div class="modal-footer">
-      <button class="btn btn-light" onclick="closeModal()">Cancel</button>
-      <button class="btn btn-primary" onclick="closeModal()">Save Configuration</button>
-    </div>
+          <div id="structureForm" class="inline-form">
+            <div class="form-grid">
+              <div class="field"><label>Stage Name *</label><select class="select" id="stageName" onchange="syncStageType()"><option data-type="Residential">Phase 1</option><option data-type="Residential">Phase 2</option></select></div>
+              <div class="field"><label>Stage Type</label><input id="stageType" class="input" value="Residential" readonly></div>
+              <div class="field"><label>Structure Type *</label><select id="structureType" class="select" onchange="updateDisplayName()"><option>Tower</option><option>Block</option><option>Wing</option></select></div>
+              <div class="field"><label>Structure Identity *</label><input id="structureCode" class="input" value="1" maxlength="5" oninput="formatCode();updateDisplayName()"></div>
+              <div class="field"><label>Display Name</label><input id="displayName" class="input" value="Tower-1" readonly></div>
+              <div class="field"><label>Total Floors *</label><input id="floors" class="input" value="11" oninput="updateTotalUnits()"></div>
+              <div class="field"><label>Default Units Per Floor *</label><input id="unitsPerFloor" class="input" value="3" oninput="updateTotalUnits()"></div>
+              <div class="field"><label>Total Units</label><input id="totalUnits" class="input" value="33" readonly></div>
+              <div class="field"><label>Status *</label><select class="select"><option>Active</option><option>Inactive</option></select></div>
+            </div>
+            <div class="form-actions"><button class="btn btn-light" onclick="toggleForm('structureForm')">Cancel</button><button class="btn btn-primary" onclick="toggleForm('structureForm')">Save Structure</button></div>
+          </div>
+
+          <table>
+            <thead><tr><th>Stage Name</th><th>Stage Type</th><th>Display Name</th><th>Total Floors</th><th>Default Unit Per Floor</th><th>Total Units</th><th>Status</th><th>Actions</th></tr></thead>
+            <tbody>
+              <tr><td>Phase 1</td><td>Residential</td><td>Tower-1</td><td>11</td><td>3</td><td>33</td><td><span class="badge">Active</span></td><td><div class="actions">✎ <span class="delete">🗑</span></div></td></tr>
+              <tr><td>Phase 2</td><td>Residential</td><td>Block-C</td><td>12</td><td>5</td><td>60</td><td><span class="badge">Active</span></td><td><div class="actions">✎ <span class="delete">🗑</span></div></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <aside class="card summary">
+      <h2>Property Summary</h2>
+      <div class="summary-item"><span>Development Stages</span><span class="summary-value">2</span></div>
+      <div class="summary-item"><span>Structures</span><span class="summary-value">2</span></div>
+      <div class="summary-item"><span>Total Floors</span><span class="summary-value">23</span></div>
+      <div class="summary-item"><span>Estimated Units</span><span class="summary-value">93</span></div>
+    </aside>
   </div>
+</main>
+
+<div class="bottom">
+  <a href="society-information.html" class="btn">← Back</a>
+  <button class="btn">▣ Save as Draft</button>
+  <div class="bottom-center">Step 2 of 5<br>40% Complete<div class="bar"><span></span></div></div>
+  <a href="unit-configuration.html" class="btn btn-primary">Save & Continue →</a>
 </div>
 
 <script>
   function toggleForm(id){document.getElementById(id).classList.toggle("open")}
-  function openModal(){document.getElementById("floorModal").classList.add("open")}
-  function closeModal(){document.getElementById("floorModal").classList.remove("open")}
-
-  function formatStructureCode(){
-    const el=document.getElementById("structureCode");
-    el.value=el.value.toUpperCase().replace(/[^A-Z0-9]/g,"");
-  }
-
-  function updateDisplayName(){
-    const type=document.getElementById("structureType").value;
-    const code=document.getElementById("structureCode").value;
-    document.getElementById("displayName").value=type+"-"+code;
-  }
-
-  function updateTotalUnits(){
-    const floors=parseInt(document.getElementById("floors").value || 0);
-    const units=parseInt(document.getElementById("unitsPerFloor").value || 0);
-    document.getElementById("totalUnits").value=floors*units;
-  }
+  function formatCode(){const e=document.getElementById("structureCode");e.value=e.value.toUpperCase().replace(/[^A-Z0-9]/g,"")}
+  function updateDisplayName(){document.getElementById("displayName").value=document.getElementById("structureType").value+"-"+document.getElementById("structureCode").value}
+  function updateTotalUnits(){document.getElementById("totalUnits").value=(parseInt(document.getElementById("floors").value||0)*parseInt(document.getElementById("unitsPerFloor").value||0))}
+  function syncStageType(){const s=document.getElementById("stageName");document.getElementById("stageType").value=s.options[s.selectedIndex].dataset.type}
 </script>
 </body>
 </html>
