@@ -5,164 +5,350 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Property Structure | MyCommunity</title>
 
-  <link rel="stylesheet" href="../../assets/css/style.css" />
-  <link rel="stylesheet" href="../../assets/css/components.css" />
-
   <style>
-    body{margin:0;background:#f3f4f6;font-family:Inter,Arial,sans-serif;color:#111827}
-    .header{height:72px;background:#fff;border-bottom:1px solid #e5e7eb;display:flex;align-items:center;justify-content:space-between;padding:0 48px}
-    .logo{display:flex;align-items:center;gap:14px}
-    .logo-icon{width:42px;height:42px;border-radius:10px;background:#2563eb;color:#fff;display:grid;place-items:center;font-weight:800}
-    .logo-title{font-size:22px;font-weight:800}
-    .avatar{width:42px;height:42px;border-radius:50%;background:#2563eb;color:#fff;display:grid;place-items:center;font-weight:700}
-    .profile{display:flex;align-items:center;gap:14px}
-    .page{padding:36px 48px 100px}
-    .top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:28px}
-    h1{margin:0;font-size:32px;letter-spacing:-.8px}
-    .subtitle{margin-top:8px;color:#6b7280;font-size:15px}
-    .step{text-align:right;color:#6b7280;font-size:14px}
-    .progress{width:180px;height:8px;background:#e5e7eb;border-radius:99px;margin-top:10px;overflow:hidden}
-    .progress span{display:block;width:40%;height:100%;background:#2563eb}
-    .layout{display:grid;grid-template-columns:1fr 320px;gap:24px}
-    .card{background:#fff;border:1px solid #e5e7eb;border-radius:12px;box-shadow:0 2px 10px rgba(15,23,42,.05)}
-    .main-card{padding:28px}
-    .section-title{font-size:18px;font-weight:800;margin-bottom:20px}
-    .structure-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:26px}
-    .structure-card{border:1px solid #e5e7eb;border-radius:10px;padding:20px;background:#fff}
-    .structure-card h3{margin:0 0 8px;font-size:16px}
-    .structure-card p{margin:0;color:#6b7280;font-size:13px;line-height:1.5}
-    .field-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-    .field label{display:block;font-size:13px;font-weight:700;margin-bottom:8px}
-    .field input,.field select{width:100%;height:44px;border:1px solid #d1d5db;border-radius:8px;padding:0 14px;font-size:14px}
-    .table{width:100%;border-collapse:collapse;margin-top:24px;font-size:14px}
-    .table th{background:#f8fafc;text-align:left;color:#374151;font-size:13px;padding:12px;border-bottom:1px solid #e5e7eb}
-    .table td{padding:14px 12px;border-bottom:1px solid #e5e7eb}
-    .badge{display:inline-flex;padding:5px 10px;border-radius:999px;background:#eff6ff;color:#2563eb;font-size:12px;font-weight:700}
-    .side-card{padding:22px}
-    .summary-item{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid #e5e7eb;font-size:14px}
+    @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:Inter,Arial,sans-serif;background:#f8fafc;color:#0f172a;font-size:14px}
+    .page{min-height:100vh;padding-bottom:78px}
+    .topbar{height:64px;background:#fff;border-bottom:1px solid #e5e7eb;display:flex;align-items:center;justify-content:space-between;padding:0 28px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand-icon{width:42px;height:42px;border-radius:10px;background:#2563eb;color:#fff;display:grid;place-items:center;font-weight:800}
+    .brand-title{font-size:22px;font-weight:800;letter-spacing:-.4px}
+    .wizard-title{position:absolute;left:50%;transform:translateX(-50%);font-weight:700;font-size:16px}
+    .user{display:flex;align-items:center;gap:16px}
+    .avatar{width:34px;height:34px;border-radius:50%;background:#dbeafe;display:grid;place-items:center;font-weight:700;color:#1d4ed8}
+
+    .content{padding:28px 52px 24px}
+    h1{font-size:26px;letter-spacing:-.5px;margin-bottom:6px}
+    .subtitle{color:#475569;font-size:13px;margin-bottom:26px}
+
+    .stepper{display:flex;align-items:center;gap:14px;margin:28px 36px 24px}
+    .step{display:flex;align-items:center;gap:9px;color:#475569;font-size:13px;white-space:nowrap}
+    .step.done{color:#475569}
+    .step.active{color:#2563eb;font-weight:700}
+    .circle{width:34px;height:34px;border-radius:50%;border:1px solid #cbd5e1;display:grid;place-items:center;background:#fff;font-weight:700}
+    .done .circle{background:#16a34a;color:#fff;border-color:#16a34a}
+    .active .circle{background:#2563eb;color:#fff;border-color:#2563eb}
+    .line{height:1px;background:#cbd5e1;flex:1}
+
+    .layout{display:grid;grid-template-columns:1fr 330px;gap:42px}
+    .card{background:#fff;border:1px solid #e5e7eb;border-radius:8px;box-shadow:0 1px 4px rgba(15,23,42,.04);margin-bottom:14px}
+    .section{padding:18px 24px}
+    .section-head{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:18px}
+    .section-title{font-size:17px;font-weight:800;margin-bottom:8px}
+    .section-subtitle{font-size:13px;color:#475569}
+
+    .btn{height:38px;border-radius:6px;border:1px solid #2563eb;background:#fff;color:#2563eb;padding:0 18px;font-weight:700;cursor:pointer}
+    .btn-primary{background:#2563eb;color:#fff;border-color:#2563eb}
+    .btn-light{border-color:#cbd5e1;color:#334155}
+    .btn-danger{border-color:#ef4444;color:#ef4444}
+
+    table{width:100%;border-collapse:collapse;font-size:13px}
+    th{background:#f8fafc;text-align:left;padding:11px 12px;border:1px solid #e5e7eb;font-weight:700;color:#334155}
+    td{padding:12px;border:1px solid #e5e7eb;color:#334155}
+    .badge{display:inline-flex;padding:4px 10px;border-radius:6px;background:#dcfce7;color:#15803d;font-weight:700}
+    .actions{color:#2563eb;font-size:16px;display:flex;gap:18px}
+    .delete{color:#ef4444}
+
+    .summary{padding:24px}
+    .summary h2{font-size:18px;margin-bottom:26px}
+    .summary-item{display:flex;align-items:center;gap:18px;padding:22px 0;border-bottom:1px solid #e5e7eb}
     .summary-item:last-child{border-bottom:none}
-    .footer{position:fixed;left:0;right:0;bottom:0;height:72px;background:#fff;border-top:1px solid #e5e7eb;display:flex;align-items:center;justify-content:space-between;padding:0 48px}
-    .btn-row{display:flex;gap:12px}
-    .btn{height:42px;padding:0 18px;border-radius:8px;border:1px solid #d1d5db;background:#fff;font-weight:700;cursor:pointer}
-    .btn-primary{background:#2563eb;color:#fff;border-color:#2563eb;text-decoration:none;display:flex;align-items:center}
+    .summary-icon{width:48px;height:48px;border-radius:6px;background:#eff6ff;color:#2563eb;display:grid;place-items:center;font-size:24px}
+    .summary-label{font-size:13px;color:#475569;margin-bottom:6px}
+    .summary-value{font-size:24px;font-weight:800}
+    .muted-value{font-size:18px;font-weight:700;color:#94a3b8}
+
+    .inline-form{display:none;background:#f8fafc;border:1px solid #dbeafe;border-radius:8px;padding:18px;margin-bottom:18px}
+    .inline-form.open{display:block}
+    .form-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .field label{display:block;font-size:12px;font-weight:700;margin-bottom:7px}
+    .input,.select{height:38px;border:1px solid #cbd5e1;border-radius:6px;background:#fff;padding:0 10px;font-size:13px;width:100%}
+    .form-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:16px}
+
+    .bottom{position:fixed;left:0;right:0;bottom:0;height:78px;background:#fff;border-top:1px solid #e5e7eb;display:flex;align-items:center;justify-content:space-between;padding:0 42px;z-index:20}
+    .bottom-center{text-align:center;font-size:13px;color:#475569}
+    .bar{width:360px;height:6px;background:#e5e7eb;border-radius:99px;margin-top:8px}
+    .bar span{display:block;width:40%;height:100%;background:#2563eb;border-radius:99px}
+
+    .modal-backdrop{display:none;position:fixed;inset:0;background:rgba(15,23,42,.45);z-index:50;align-items:center;justify-content:center}
+    .modal-backdrop.open{display:flex}
+    .modal{width:860px;background:#fff;border-radius:12px;box-shadow:0 24px 80px rgba(15,23,42,.25);overflow:hidden}
+    .modal-head{height:64px;border-bottom:1px solid #e5e7eb;display:flex;align-items:center;justify-content:space-between;padding:0 24px}
+    .modal-title{font-size:18px;font-weight:800}
+    .modal-body{padding:24px}
+    .floor-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .preview{margin-top:22px;border:1px solid #e5e7eb;border-radius:8px;background:#f8fafc;padding:16px}
+    .preview-title{font-weight:800;margin-bottom:12px}
+    .floor-preview{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+    .floor-chip{background:#fff;border:1px solid #e5e7eb;border-radius:6px;padding:10px;text-align:center;font-size:12px}
+    .modal-footer{height:68px;border-top:1px solid #e5e7eb;display:flex;align-items:center;justify-content:flex-end;gap:12px;padding:0 24px}
   </style>
 </head>
 
 <body>
-<header class="header">
-  <div class="brand">
-    <img src="../../assets/images/logo.svg"
-         class="brand-logo"
-         alt="MyCommunity">
+<div class="page">
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-icon">MC</div>
+      <span class="brand-title">MyCommunity</span>
+    </div>
+    <div class="wizard-title">Society Setup Wizard</div>
+    <div class="user">
+      <div class="avatar">RS</div>
+      <b>Rahul Shah</b>
+      <span>⌄</span>
+      <span style="color:#cbd5e1">|</span>
+      <span>↪ Logout</span>
+    </div>
+  </header>
 
-    <span class="brand-title">
-        MyCommunity
-    </span>
+  <div class="stepper">
+    <div class="step done"><div class="circle">✓</div>Society Information</div><div class="line"></div>
+    <div class="step active"><div class="circle">2</div>Property Structure</div><div class="line"></div>
+    <div class="step"><div class="circle">3</div>Unit Configuration</div><div class="line"></div>
+    <div class="step"><div class="circle">4</div>Financial Configuration</div><div class="line"></div>
+    <div class="step"><div class="circle">5</div>Review & Activate</div>
+  </div>
+
+  <main class="content">
+    <h1>Property Structure</h1>
+    <div class="subtitle">Configure the physical structure of your society before adding units.</div>
+
+    <div class="layout">
+      <section>
+        <div class="card">
+          <div class="section">
+            <div class="section-head">
+              <div>
+                <div class="section-title">1. Development Stages</div>
+                <div class="section-subtitle">Create one or more development phases.</div>
+              </div>
+              <button class="btn" onclick="toggleForm('stageForm')">＋ Add Stage</button>
+            </div>
+
+            <div id="stageForm" class="inline-form">
+              <div class="form-grid">
+                <div class="field">
+                  <label>Stage Name *</label>
+                  <input class="input" value="Phase 2">
+                </div>
+                <div class="field">
+                  <label>Description *</label>
+                  <input class="input" value="Commercial Wing">
+                </div>
+                <div class="field">
+                  <label>Status</label>
+                  <select class="select"><option>Active</option><option>Inactive</option></select>
+                </div>
+              </div>
+              <div class="form-actions">
+                <button class="btn btn-light" onclick="toggleForm('stageForm')">Cancel</button>
+                <button class="btn btn-primary" onclick="toggleForm('stageForm')">Save Stage</button>
+              </div>
+            </div>
+
+            <table>
+              <thead>
+                <tr><th>Stage Name</th><th>Description</th><th>Status</th><th>Actions</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Phase 1</td><td>Residential Towers</td><td><span class="badge">Active</span></td><td><div class="actions">✎ <span class="delete">🗑</span></div></td></tr>
+              </tbody>
+            </table>
+            <div style="font-size:12px;color:#64748b;margin-top:12px">Showing 1 to 1 of 1 entries</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="section">
+            <div class="section-head">
+              <div>
+                <div class="section-title">2. Structures</div>
+                <div class="section-subtitle">Configure Towers, Wings or Blocks.</div>
+              </div>
+              <button class="btn" onclick="toggleForm('structureForm')">＋ Add Structure</button>
+            </div>
+
+            <div id="structureForm" class="inline-form">
+              <div class="form-grid">
+                <div class="field">
+                  <label>Structure Name *</label>
+                  <input class="input" value="C Tower">
+                </div>
+                <div class="field">
+                  <label>Type *</label>
+                  <select class="select"><option>Tower</option><option>Wing</option><option>Block</option><option>Club House</option></select>
+                </div>
+                <div class="field">
+                  <label>Stage *</label>
+                  <select class="select"><option>Phase 1</option></select>
+                </div>
+                <div class="field">
+                  <label>Floors *</label>
+                  <input class="input" value="12">
+                </div>
+                <div class="field">
+                  <label>Units Per Floor *</label>
+                  <input class="input" value="4">
+                </div>
+                <div class="field">
+                  <label>Status</label>
+                  <select class="select"><option>Active</option><option>Inactive</option></select>
+                </div>
+              </div>
+              <div class="form-actions">
+                <button class="btn btn-light" onclick="toggleForm('structureForm')">Cancel</button>
+                <button class="btn btn-primary" onclick="toggleForm('structureForm')">Save Structure</button>
+              </div>
+            </div>
+
+            <table>
+              <thead>
+                <tr><th>Structure Name</th><th>Type</th><th>Stage</th><th>Floors</th><th>Status</th><th>Actions</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>A Tower</td><td>Tower</td><td>Phase 1</td><td>12</td><td><span class="badge">Active</span></td><td><div class="actions">✎ <span class="delete">🗑</span></div></td></tr>
+                <tr><td>B Tower</td><td>Tower</td><td>Phase 1</td><td>10</td><td><span class="badge">Active</span></td><td><div class="actions">✎ <span class="delete">🗑</span></div></td></tr>
+                <tr><td>Club House</td><td>Block</td><td>Phase 1</td><td>2</td><td><span class="badge">Active</span></td><td><div class="actions">✎ <span class="delete">🗑</span></div></td></tr>
+              </tbody>
+            </table>
+            <div style="font-size:12px;color:#64748b;margin-top:12px">Showing 1 to 3 of 3 entries</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="section">
+            <div class="section-head">
+              <div>
+                <div class="section-title">3. Floor Configuration</div>
+                <div class="section-subtitle">Configure floors for each structure.</div>
+              </div>
+              <button class="btn" onclick="openModal()">⚙ Configure Floors</button>
+            </div>
+
+            <table>
+              <thead>
+                <tr><th>Structure</th><th>Total Floors</th><th>Numbering Format</th><th>Actions</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>A Tower</td><td>12</td><td>Ground + 11</td><td><div class="actions">⚙</div></td></tr>
+                <tr><td>B Tower</td><td>10</td><td>Ground + 9</td><td><div class="actions">⚙</div></td></tr>
+                <tr><td>Club House</td><td>2</td><td>Ground + 1</td><td><div class="actions">⚙</div></td></tr>
+              </tbody>
+            </table>
+            <div style="font-size:12px;color:#64748b;margin-top:12px">Showing 1 to 3 of 3 entries</div>
+          </div>
+        </div>
+      </section>
+
+      <aside class="card summary">
+        <h2>Property Summary</h2>
+
+        <div class="summary-item">
+          <div class="summary-icon">▣</div>
+          <div>
+            <div class="summary-label">Development Stages</div>
+            <div class="summary-value">1</div>
+          </div>
+        </div>
+
+        <div class="summary-item">
+          <div class="summary-icon">🏢</div>
+          <div>
+            <div class="summary-label">Structures</div>
+            <div class="summary-value">3</div>
+          </div>
+        </div>
+
+        <div class="summary-item">
+          <div class="summary-icon">▤</div>
+          <div>
+            <div class="summary-label">Total Floors</div>
+            <div class="summary-value">24</div>
+          </div>
+        </div>
+
+        <div class="summary-item">
+          <div class="summary-icon">⌂</div>
+          <div>
+            <div class="summary-label">Estimated Units</div>
+            <div class="muted-value">Not Configured</div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <div class="bottom">
+    <a href="society-information.html" class="btn" style="text-decoration:none;display:flex;align-items:center">← Back</a>
+    <button class="btn">▣ Save as Draft</button>
+    <div class="bottom-center">
+      Step 2 of 5<br>40% Complete
+      <div class="bar"><span></span></div>
+    </div>
+    <a href="unit-configuration.html" class="btn btn-primary" style="text-decoration:none;display:flex;align-items:center">Save & Continue →</a>
+  </div>
 </div>
-  <div class="profile">
-    <div style="text-align:right">
-      <div style="font-weight:700">Rahul Shah</div>
-      <div style="font-size:13px;color:#6b7280">Society Owner</div>
-    </div>
-    <div class="avatar">RS</div>
-  </div>
-</header>
 
-<main class="page">
-  <div class="top">
-    <div>
-      <h1>Property Structure</h1>
-      <div class="subtitle">Define how your society is organized into towers, wings, floors and blocks.</div>
+<div id="floorModal" class="modal-backdrop">
+  <div class="modal">
+    <div class="modal-head">
+      <div class="modal-title">Configure Floors</div>
+      <button class="btn btn-light" onclick="closeModal()">×</button>
     </div>
-    <div class="step">
-      Step 2 of 5
-      <div class="progress"><span></span></div>
-    </div>
-  </div>
 
-  <div class="layout">
-    <section class="card main-card">
-      <div class="section-title">Structure Type</div>
-
-      <div class="structure-grid">
-        <div class="structure-card">
-          <h3>Single Building</h3>
-          <p>One building with multiple floors and units.</p>
+    <div class="modal-body">
+      <div class="floor-grid">
+        <div class="field">
+          <label>Structure *</label>
+          <select class="select"><option>A Tower</option><option>B Tower</option><option>Club House</option></select>
         </div>
-        <div class="structure-card" style="border-color:#2563eb;background:#eff6ff">
-          <h3>Multiple Towers</h3>
-          <p>Multiple towers or wings inside the society.</p>
+        <div class="field">
+          <label>Total Floors *</label>
+          <input class="input" value="12">
         </div>
-        <div class="structure-card">
-          <h3>Mixed Property</h3>
-          <p>A mix of flats, shops, villas or offices.</p>
+        <div class="field">
+          <label>Ground Floor Name</label>
+          <input class="input" value="Ground">
+        </div>
+        <div class="field">
+          <label>Numbering Format *</label>
+          <select class="select"><option>Ground + Number</option><option>Floor + Unit</option></select>
         </div>
       </div>
 
-      <div class="section-title">Structure Details</div>
-
-      <div class="field-grid">
-        <div class="field">
-          <label>Total Towers / Wings</label>
-          <input value="4" />
-        </div>
-        <div class="field">
-          <label>Default Floors per Tower</label>
-          <input value="12" />
-        </div>
-        <div class="field">
-          <label>Default Units per Floor</label>
-          <input value="4" />
-        </div>
-        <div class="field">
-          <label>Parking Structure</label>
-          <select>
-            <option>Basement + Open Parking</option>
-            <option>Basement Parking</option>
-            <option>Open Parking</option>
-          </select>
+      <div class="preview">
+        <div class="preview-title">Floor Numbering Preview</div>
+        <div class="floor-preview">
+          <div class="floor-chip"><b>Ground</b><br>G-01, G-02, G-03</div>
+          <div class="floor-chip"><b>1st Floor</b><br>101, 102, 103</div>
+          <div class="floor-chip"><b>2nd Floor</b><br>201, 202, 203</div>
+          <div class="floor-chip"><b>3rd Floor</b><br>301, 302, 303</div>
         </div>
       </div>
+    </div>
 
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Tower / Wing</th>
-            <th>Floors</th>
-            <th>Units / Floor</th>
-            <th>Total Units</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>Tower A</td><td>12</td><td>4</td><td>48</td><td><span class="badge">Configured</span></td></tr>
-          <tr><td>Tower B</td><td>12</td><td>4</td><td>48</td><td><span class="badge">Configured</span></td></tr>
-          <tr><td>Tower C</td><td>14</td><td>4</td><td>56</td><td><span class="badge">Configured</span></td></tr>
-          <tr><td>Tower D</td><td>14</td><td>4</td><td>56</td><td><span class="badge">Configured</span></td></tr>
-        </tbody>
-      </table>
-    </section>
-
-    <aside class="card side-card">
-      <div class="section-title">Setup Summary</div>
-      <div class="summary-item"><span>Current Step</span><b>Property</b></div>
-      <div class="summary-item"><span>Completion</span><b>40%</b></div>
-      <div class="summary-item"><span>Towers</span><b>4</b></div>
-      <div class="summary-item"><span>Total Floors</span><b>52</b></div>
-      <div class="summary-item"><span>Estimated Units</span><b>208</b></div>
-      <div style="margin-top:20px;color:#6b7280;font-size:13px;line-height:1.6">
-        These settings help generate unit numbers and map residents correctly.
-      </div>
-    </aside>
+    <div class="modal-footer">
+      <button class="btn btn-light" onclick="closeModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="closeModal()">Save Configuration</button>
+    </div>
   </div>
-</main>
+</div>
 
-<footer class="footer">
-  <a href="society-information.html" style="color:#2563eb;text-decoration:none;font-weight:700">← Back</a>
-  <div class="btn-row">
-    <button class="btn">Save as Draft</button>
-    <a href="unit-configuration.html" class="btn-primary btn">Save & Continue</a>
-  </div>
-</footer>
+<script>
+  function toggleForm(id){
+    document.getElementById(id).classList.toggle("open");
+  }
+
+  function openModal(){
+    document.getElementById("floorModal").classList.add("open");
+  }
+
+  function closeModal(){
+    document.getElementById("floorModal").classList.remove("open");
+  }
+</script>
 </body>
 </html>
